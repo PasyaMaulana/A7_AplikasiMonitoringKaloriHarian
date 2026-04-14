@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     {
         private string connectionString = "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
         private int selectedIdKonsumsi = -1;
-        private int selectedIdTarget   = -1;
+        private int selectedIdTarget = -1;
 
         public AMKH()
         {
@@ -40,13 +40,13 @@ namespace WindowsFormsApp1
                 using (SqlConnection c = new SqlConnection(connectionString))
                 {
                     c.Open();
-                    lblStatusKoneksi.Text      = "● Status Koneksi: TERHUBUNG";
+                    lblStatusKoneksi.Text = "● Status Koneksi: TERHUBUNG";
                     lblStatusKoneksi.ForeColor = Color.LimeGreen;
                 }
             }
             catch (Exception ex)
             {
-                lblStatusKoneksi.Text      = "● Status Koneksi: GAGAL";
+                lblStatusKoneksi.Text = "● Status Koneksi: GAGAL";
                 lblStatusKoneksi.ForeColor = Color.Red;
                 MessageBox.Show("Gagal terhubung ke database!\n\n" + ex.Message,
                     "Error Koneksi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,16 +90,16 @@ namespace WindowsFormsApp1
                     string tglStr = tglDipilih.ToString("dd/MM/yyyy");
                     if (targetTgl > 0)
                     {
-                        decimal sisa   = targetTgl - totalKal;
-                        string  status = sisa >= 0
+                        decimal sisa = targetTgl - totalKal;
+                        string status = sisa >= 0
                             ? "Sisa: " + sisa.ToString("N0") + " kkal"
                             : "MELEBIHI " + Math.Abs(sisa).ToString("N0") + " kkal!";
-                        lblTotalKaloriHariIni.Text      = tglStr + " — " + totalKal.ToString("N0") + " / " + targetTgl.ToString("N0") + " kkal  |  " + status;
+                        lblTotalKaloriHariIni.Text = tglStr + " — " + totalKal.ToString("N0") + " / " + targetTgl.ToString("N0") + " kkal  |  " + status;
                         lblTotalKaloriHariIni.ForeColor = sisa >= 0 ? Color.LimeGreen : Color.Red;
                     }
                     else
                     {
-                        lblTotalKaloriHariIni.Text      = tglStr + " — Kalori: " + totalKal.ToString("N0") + " kkal  |  (belum ada target)";
+                        lblTotalKaloriHariIni.Text = tglStr + " — Kalori: " + totalKal.ToString("N0") + " kkal  |  (belum ada target)";
                         lblTotalKaloriHariIni.ForeColor = Color.FromArgb(255, 200, 60);
                     }
                 }
@@ -128,22 +128,22 @@ namespace WindowsFormsApp1
                         INNER JOIN Target t ON k.id_target = t.id_target
                         ORDER  BY k.tanggal DESC, k.id_konsumsi DESC";
 
-                    SqlCommand    cmd    = new SqlCommand(query, c);
+                    SqlCommand cmd = new SqlCommand(query, c);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    DataTable     dt     = new DataTable();
+                    DataTable dt = new DataTable();
                     dt.Load(reader);
                     dgvKonsumsi.DataSource = dt;
 
                     if (dgvKonsumsi.Columns.Count > 0)
                     {
-                        dgvKonsumsi.Columns["id_konsumsi"].HeaderText   = "ID Konsumsi";
-                        dgvKonsumsi.Columns["id_target"].HeaderText     = "ID Target";
+                        dgvKonsumsi.Columns["id_konsumsi"].HeaderText = "ID Konsumsi";
+                        dgvKonsumsi.Columns["id_target"].HeaderText = "ID Target";
                         dgvKonsumsi.Columns["target_kalori"].HeaderText = "Target Kalori";
-                        dgvKonsumsi.Columns["nama_makanan"].HeaderText  = "Nama Makanan";
-                        dgvKonsumsi.Columns["kalori"].HeaderText        = "Kalori (kkal)";
-                        dgvKonsumsi.Columns["tanggal"].HeaderText       = "Tanggal";
-                        dgvKonsumsi.Columns["id_konsumsi"].Visible      = false;
-                        dgvKonsumsi.Columns["id_target"].Visible        = false;
+                        dgvKonsumsi.Columns["nama_makanan"].HeaderText = "Nama Makanan";
+                        dgvKonsumsi.Columns["kalori"].HeaderText = "Kalori (kkal)";
+                        dgvKonsumsi.Columns["tanggal"].HeaderText = "Tanggal";
+                        dgvKonsumsi.Columns["id_konsumsi"].Visible = false;
+                        dgvKonsumsi.Columns["id_target"].Visible = false;
                     }
                 }
                 TampilkanJumlahData();
@@ -180,14 +180,14 @@ namespace WindowsFormsApp1
                     cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
 
                     SqlDataReader reader = cmd.ExecuteReader();
-                    DataTable     dt     = new DataTable();
+                    DataTable dt = new DataTable();
                     dt.Load(reader);
                     dgvKonsumsi.DataSource = dt;
 
                     if (dgvKonsumsi.Columns.Count > 0)
                     {
                         dgvKonsumsi.Columns["id_konsumsi"].Visible = false;
-                        dgvKonsumsi.Columns["id_target"].Visible   = false;
+                        dgvKonsumsi.Columns["id_target"].Visible = false;
                     }
 
                     lblTotalKonsumsi.Text = "Hasil Pencarian: " + dt.Rows.Count + " record";
@@ -209,15 +209,15 @@ namespace WindowsFormsApp1
 
             DataGridViewRow row = dgvKonsumsi.Rows[e.RowIndex];
             selectedIdKonsumsi = Convert.ToInt32(row.Cells["id_konsumsi"].Value);
-            selectedIdTarget   = Convert.ToInt32(row.Cells["id_target"].Value);
+            selectedIdTarget = Convert.ToInt32(row.Cells["id_target"].Value);
 
-            txtNamaMakanan.Text      = row.Cells["nama_makanan"].Value.ToString();
-            txtKalori.Text           = row.Cells["kalori"].Value.ToString();
+            txtNamaMakanan.Text = row.Cells["nama_makanan"].Value.ToString();
+            txtKalori.Text = row.Cells["kalori"].Value.ToString();
             dtpTanggalKonsumsi.Value = Convert.ToDateTime(row.Cells["tanggal"].Value);
-            cmbTarget.SelectedValue  = selectedIdTarget;
+            cmbTarget.SelectedValue = selectedIdTarget;
 
             btnUpdate.Enabled = true;
-            btnHapus.Enabled  = true;
+            btnHapus.Enabled = true;
 
             TampilkanJumlahData();
         }
@@ -260,7 +260,7 @@ namespace WindowsFormsApp1
 
                         SqlCommand cmdUpd = new SqlCommand(
                             "UPDATE Target SET target_kalori = @tk WHERE tanggal = @tgl", c);
-                        cmdUpd.Parameters.AddWithValue("@tk",  targetBaru);
+                        cmdUpd.Parameters.AddWithValue("@tk", targetBaru);
                         cmdUpd.Parameters.AddWithValue("@tgl", tglTarget);
                         cmdUpd.ExecuteNonQuery();
                         MessageBox.Show("Target tanggal " + tglTarget.ToString("dd/MM/yyyy") + " diperbarui ke " + targetBaru.ToString("N0") + " kkal!",
@@ -270,7 +270,7 @@ namespace WindowsFormsApp1
                     {
                         SqlCommand cmdIns = new SqlCommand(
                             "INSERT INTO Target (target_kalori, tanggal) VALUES (@tk, @tgl)", c);
-                        cmdIns.Parameters.AddWithValue("@tk",  targetBaru);
+                        cmdIns.Parameters.AddWithValue("@tk", targetBaru);
                         cmdIns.Parameters.AddWithValue("@tgl", tglTarget);
                         cmdIns.ExecuteNonQuery();
                         MessageBox.Show("Target tanggal " + tglTarget.ToString("dd/MM/yyyy") + " diset ke " + targetBaru.ToString("N0") + " kkal!",
@@ -315,9 +315,9 @@ namespace WindowsFormsApp1
 
                     if (dt.Rows.Count > 0)
                     {
-                        cmbTarget.DataSource    = dt;
+                        cmbTarget.DataSource = dt;
                         cmbTarget.DisplayMember = "keterangan";
-                        cmbTarget.ValueMember   = "id_target";
+                        cmbTarget.ValueMember = "id_target";
                     }
                     else
                     {
@@ -352,7 +352,7 @@ namespace WindowsFormsApp1
                     {
                         SqlCommand cmdTarget = new SqlCommand(
                             "INSERT INTO Target (target_kalori, tanggal) OUTPUT INSERTED.id_target VALUES (@tk, @tgl)", c);
-                        cmdTarget.Parameters.AddWithValue("@tk",  2000);
+                        cmdTarget.Parameters.AddWithValue("@tk", 2000);
                         cmdTarget.Parameters.AddWithValue("@tgl", tglKonsumsi);
                         idTarget = (int)cmdTarget.ExecuteScalar();
                     }
@@ -362,9 +362,9 @@ namespace WindowsFormsApp1
                         @"INSERT INTO Konsumsi (id_target, nama_makanan, kalori, tanggal)
                           VALUES (@id_target, @nama, @kalori, @tgl)", c);
                     cmd.Parameters.AddWithValue("@id_target", idTarget);
-                    cmd.Parameters.AddWithValue("@nama",      txtNamaMakanan.Text.Trim());
-                    cmd.Parameters.AddWithValue("@kalori",    decimal.Parse(txtKalori.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tgl",       tglKonsumsi);
+                    cmd.Parameters.AddWithValue("@nama", txtNamaMakanan.Text.Trim());
+                    cmd.Parameters.AddWithValue("@kalori", decimal.Parse(txtKalori.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@tgl", tglKonsumsi);
 
                     if (cmd.ExecuteNonQuery() > 0)
                     {
@@ -408,10 +408,10 @@ namespace WindowsFormsApp1
                         @"UPDATE Konsumsi
                           SET nama_makanan = @nama, kalori = @kalori, tanggal = @tgl
                           WHERE id_konsumsi = @id", c);
-                    cmd.Parameters.AddWithValue("@nama",   txtNamaMakanan.Text.Trim());
+                    cmd.Parameters.AddWithValue("@nama", txtNamaMakanan.Text.Trim());
                     cmd.Parameters.AddWithValue("@kalori", decimal.Parse(txtKalori.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tgl",    dtpTanggalKonsumsi.Value.Date);
-                    cmd.Parameters.AddWithValue("@id",     selectedIdKonsumsi);
+                    cmd.Parameters.AddWithValue("@tgl", dtpTanggalKonsumsi.Value.Date);
+                    cmd.Parameters.AddWithValue("@id", selectedIdKonsumsi);
 
                     if (cmd.ExecuteNonQuery() > 0)
                     {
@@ -489,10 +489,10 @@ namespace WindowsFormsApp1
             txtKalori.Clear();
             txtCari.Clear();
             dtpTanggalKonsumsi.Value = DateTime.Today;
-            selectedIdKonsumsi       = -1;
-            selectedIdTarget         = -1;
-            btnUpdate.Enabled        = false;
-            btnHapus.Enabled         = false;
+            selectedIdKonsumsi = -1;
+            selectedIdTarget = -1;
+            btnUpdate.Enabled = false;
+            btnHapus.Enabled = false;
             if (cmbTarget.Items.Count > 0) cmbTarget.SelectedIndex = 0;
         }
 
@@ -513,9 +513,9 @@ namespace WindowsFormsApp1
                           FROM Target ORDER BY tanggal DESC", c);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    cmbTarget.DataSource    = dt;
+                    cmbTarget.DataSource = dt;
                     cmbTarget.DisplayMember = "keterangan";
-                    cmbTarget.ValueMember   = "id_target";
+                    cmbTarget.ValueMember = "id_target";
                 }
             }
             catch { }
