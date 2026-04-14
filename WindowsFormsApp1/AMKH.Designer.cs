@@ -237,6 +237,17 @@
             this.txtTargetKalori.Name = "txtTargetKalori";
             this.txtTargetKalori.Size = new System.Drawing.Size(100, 23);
             this.txtTargetKalori.TabIndex = 3;
+            // 
+            // lblTargetKalori
+            // 
+            this.lblTargetKalori.AutoSize = true;
+            this.lblTargetKalori.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblTargetKalori.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(185)))), ((int)(((byte)(120)))));
+            this.lblTargetKalori.Location = new System.Drawing.Point(270, 28);
+            this.lblTargetKalori.Name = "lblTargetKalori";
+            this.lblTargetKalori.Size = new System.Drawing.Size(79, 15);
+            this.lblTargetKalori.TabIndex = 2;
+            this.lblTargetKalori.Text = "Target Kalori :";
         }
     }
 }
