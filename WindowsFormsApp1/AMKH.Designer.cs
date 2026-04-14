@@ -87,6 +87,17 @@
             this.pbLogo.TabIndex = 3;
             this.pbLogo.TabStop = false;
             this.pbLogo.Click += new System.EventHandler(this.pbLogo_Click);
+            // 
+            // lblStatusKoneksi
+            // 
+            this.lblStatusKoneksi.AutoSize = true;
+            this.lblStatusKoneksi.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblStatusKoneksi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.lblStatusKoneksi.Location = new System.Drawing.Point(700, 28);
+            this.lblStatusKoneksi.Name = "lblStatusKoneksi";
+            this.lblStatusKoneksi.Size = new System.Drawing.Size(127, 15);
+            this.lblStatusKoneksi.TabIndex = 1;
+            this.lblStatusKoneksi.Text = "● Memeriksa koneksi...";
         }
     }
 }
