@@ -270,6 +270,30 @@
             this.lblTanggalTarget.Size = new System.Drawing.Size(91, 15);
             this.lblTanggalTarget.TabIndex = 0;
             this.lblTanggalTarget.Text = "Tanggal Target :";
+            // 
+            // grpInput
+            // 
+            this.grpInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(34)))));
+            this.grpInput.Controls.Add(this.btnBersihkan);
+            this.grpInput.Controls.Add(this.btnHapus);
+            this.grpInput.Controls.Add(this.btnUpdate);
+            this.grpInput.Controls.Add(this.btnTambah);
+            this.grpInput.Controls.Add(this.cmbTarget);
+            this.grpInput.Controls.Add(this.lblTarget);
+            this.grpInput.Controls.Add(this.dtpTanggalKonsumsi);
+            this.grpInput.Controls.Add(this.lblTanggal);
+            this.grpInput.Controls.Add(this.txtKalori);
+            this.grpInput.Controls.Add(this.lblKalori);
+            this.grpInput.Controls.Add(this.txtNamaMakanan);
+            this.grpInput.Controls.Add(this.lblNamaMakanan);
+            this.grpInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.grpInput.Location = new System.Drawing.Point(10, 203);
+            this.grpInput.Name = "grpInput";
+            this.grpInput.Size = new System.Drawing.Size(960, 130);
+            this.grpInput.TabIndex = 3;
+            this.grpInput.TabStop = false;
+            this.grpInput.Text = "Input Data Konsumsi";
         }
     }
 }
