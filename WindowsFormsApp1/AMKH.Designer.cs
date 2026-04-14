@@ -137,6 +137,17 @@
             this.panelInfo.Name = "panelInfo";
             this.panelInfo.Size = new System.Drawing.Size(960, 40);
             this.panelInfo.TabIndex = 1;
+            // 
+            // lblTotalKaloriHariIni
+            // 
+            this.lblTotalKaloriHariIni.AutoSize = true;
+            this.lblTotalKaloriHariIni.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTotalKaloriHariIni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(60)))));
+            this.lblTotalKaloriHariIni.Location = new System.Drawing.Point(530, 10);
+            this.lblTotalKaloriHariIni.Name = "lblTotalKaloriHariIni";
+            this.lblTotalKaloriHariIni.Size = new System.Drawing.Size(50, 15);
+            this.lblTotalKaloriHariIni.TabIndex = 2;
+            this.lblTotalKaloriHariIni.Text = "Kalori: -";
         }
     }
 }
