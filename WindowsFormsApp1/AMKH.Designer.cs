@@ -98,6 +98,17 @@
             this.lblStatusKoneksi.Size = new System.Drawing.Size(127, 15);
             this.lblStatusKoneksi.TabIndex = 1;
             this.lblStatusKoneksi.Text = "● Memeriksa koneksi...";
+            // 
+            // lblJudul
+            // 
+            this.lblJudul.AutoSize = true;
+            this.lblJudul.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblJudul.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.lblJudul.Location = new System.Drawing.Point(85, 14);
+            this.lblJudul.Name = "lblJudul";
+            this.lblJudul.Size = new System.Drawing.Size(331, 28);
+            this.lblJudul.TabIndex = 0;
+            this.lblJudul.Text = "Aplikasi Monitoring Kalori Harian";
         }
     }
 }
