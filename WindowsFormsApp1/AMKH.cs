@@ -111,6 +111,50 @@ namespace WindowsFormsApp1
             }
         }
 
+        // ============================================================
+        // BAGIAN E - SqlDataReader
+        // ============================================================
+        private void TampilkanData()
+        {
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    string query = @"
+                        SELECT k.id_konsumsi, k.id_target, t.target_kalori,
+                               k.nama_makanan, k.kalori, k.tanggal
+                        FROM   Konsumsi k
+                        INNER JOIN Target t ON k.id_target = t.id_target
+                        ORDER  BY k.tanggal DESC, k.id_konsumsi DESC";
+
+                    SqlCommand    cmd    = new SqlCommand(query, c);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable     dt     = new DataTable();
+                    dt.Load(reader);
+                    dgvKonsumsi.DataSource = dt;
+
+                    if (dgvKonsumsi.Columns.Count > 0)
+                    {
+                        dgvKonsumsi.Columns["id_konsumsi"].HeaderText   = "ID Konsumsi";
+                        dgvKonsumsi.Columns["id_target"].HeaderText     = "ID Target";
+                        dgvKonsumsi.Columns["target_kalori"].HeaderText = "Target Kalori";
+                        dgvKonsumsi.Columns["nama_makanan"].HeaderText  = "Nama Makanan";
+                        dgvKonsumsi.Columns["kalori"].HeaderText        = "Kalori (kkal)";
+                        dgvKonsumsi.Columns["tanggal"].HeaderText       = "Tanggal";
+                        dgvKonsumsi.Columns["id_konsumsi"].Visible      = false;
+                        dgvKonsumsi.Columns["id_target"].Visible        = false;
+                    }
+                }
+                TampilkanJumlahData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error menampilkan data: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         }
     }
 }
