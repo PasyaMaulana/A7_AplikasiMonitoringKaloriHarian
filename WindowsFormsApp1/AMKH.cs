@@ -520,5 +520,49 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
+
+        // ============================================================
+        // BAGIAN F - Validasi Input
+        // ============================================================
+        private bool ValidasiInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtNamaMakanan.Text))
+            {
+                MessageBox.Show("Nama makanan tidak boleh kosong!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNamaMakanan.Focus(); return false;
+            }
+            if (txtNamaMakanan.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Nama makanan minimal 3 karakter!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNamaMakanan.Focus(); return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtKalori.Text))
+            {
+                MessageBox.Show("Kalori tidak boleh kosong!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKalori.Focus(); return false;
+            }
+            if (!decimal.TryParse(txtKalori.Text, out decimal kalori))
+            {
+                MessageBox.Show("Kalori harus berupa angka!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKalori.Focus(); return false;
+            }
+            if (kalori <= 0)
+            {
+                MessageBox.Show("Kalori harus lebih dari 0!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKalori.Focus(); return false;
+            }
+            if (kalori > 5000)
+            {
+                MessageBox.Show("Kalori maksimal 5000 kkal per makanan!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKalori.Focus(); return false;
+            }
+            return true;
+        }
     }
 }
