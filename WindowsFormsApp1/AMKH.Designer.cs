@@ -170,6 +170,25 @@
             this.lblTotalKonsumsi.Size = new System.Drawing.Size(130, 15);
             this.lblTotalKonsumsi.TabIndex = 0;
             this.lblTotalKonsumsi.Text = "Total Data Konsumsi: -";
+            // 
+            // grpTarget
+            // 
+            this.grpTarget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(38)))));
+            this.grpTarget.Controls.Add(this.lblInfoTarget);
+            this.grpTarget.Controls.Add(this.btnSetTarget);
+            this.grpTarget.Controls.Add(this.lblSatuanTarget);
+            this.grpTarget.Controls.Add(this.txtTargetKalori);
+            this.grpTarget.Controls.Add(this.lblTargetKalori);
+            this.grpTarget.Controls.Add(this.dtpTanggalTarget);
+            this.grpTarget.Controls.Add(this.lblTanggalTarget);
+            this.grpTarget.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.grpTarget.Location = new System.Drawing.Point(10, 133);
+            this.grpTarget.Name = "grpTarget";
+            this.grpTarget.Size = new System.Drawing.Size(960, 60);
+            this.grpTarget.TabIndex = 2;
+            this.grpTarget.TabStop = false;
+            this.grpTarget.Text = "Set Target Kalori per Tanggal";
         }
     }
 }
