@@ -125,6 +125,18 @@
             this.panelGoldLine.Name = "panelGoldLine";
             this.panelGoldLine.Size = new System.Drawing.Size(984, 3);
             this.panelGoldLine.TabIndex = 5;
+            // 
+            // panelInfo
+            // 
+            this.panelInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.panelInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInfo.Controls.Add(this.lblTotalKaloriHariIni);
+            this.panelInfo.Controls.Add(this.lblTotalTarget);
+            this.panelInfo.Controls.Add(this.lblTotalKonsumsi);
+            this.panelInfo.Location = new System.Drawing.Point(10, 83);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(960, 40);
+            this.panelInfo.TabIndex = 1;
         }
     }
 }
