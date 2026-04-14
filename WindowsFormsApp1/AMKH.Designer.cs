@@ -148,6 +148,17 @@
             this.lblTotalKaloriHariIni.Size = new System.Drawing.Size(50, 15);
             this.lblTotalKaloriHariIni.TabIndex = 2;
             this.lblTotalKaloriHariIni.Text = "Kalori: -";
+            // 
+            // lblTotalTarget
+            // 
+            this.lblTotalTarget.AutoSize = true;
+            this.lblTotalTarget.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTotalTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(200)))), ((int)(((byte)(120)))));
+            this.lblTotalTarget.Location = new System.Drawing.Point(300, 10);
+            this.lblTotalTarget.Name = "lblTotalTarget";
+            this.lblTotalTarget.Size = new System.Drawing.Size(113, 15);
+            this.lblTotalTarget.TabIndex = 1;
+            this.lblTotalTarget.Text = "Total Data Target: -";
         }
     }
 }
