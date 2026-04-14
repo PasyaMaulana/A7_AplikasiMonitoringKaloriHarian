@@ -248,6 +248,17 @@
             this.lblTargetKalori.Size = new System.Drawing.Size(79, 15);
             this.lblTargetKalori.TabIndex = 2;
             this.lblTargetKalori.Text = "Target Kalori :";
+            // 
+            // dtpTanggalTarget
+            // 
+            this.dtpTanggalTarget.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.dtpTanggalTarget.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(30)))));
+            this.dtpTanggalTarget.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTanggalTarget.Location = new System.Drawing.Point(120, 25);
+            this.dtpTanggalTarget.Name = "dtpTanggalTarget";
+            this.dtpTanggalTarget.Size = new System.Drawing.Size(130, 23);
+            this.dtpTanggalTarget.TabIndex = 1;
+            this.dtpTanggalTarget.Value = new System.DateTime(2026, 4, 15, 0, 0, 0, 0);
         }
     }
 }
