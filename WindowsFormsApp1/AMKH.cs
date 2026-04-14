@@ -495,5 +495,30 @@ namespace WindowsFormsApp1
             btnHapus.Enabled         = false;
             if (cmbTarget.Items.Count > 0) cmbTarget.SelectedIndex = 0;
         }
+
+        // ============================================================
+        // Load ComboBox Target semua tanggal (SqlDataAdapter)
+        // ============================================================
+        private void LoadComboTarget()
+        {
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(
+                        @"SELECT id_target,
+                                 CAST(target_kalori AS VARCHAR) + ' kkal - ' +
+                                 CONVERT(VARCHAR, tanggal, 103) AS keterangan
+                          FROM Target ORDER BY tanggal DESC", c);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    cmbTarget.DataSource    = dt;
+                    cmbTarget.DisplayMember = "keterangan";
+                    cmbTarget.ValueMember   = "id_target";
+                }
+            }
+            catch { }
+        }
     }
 }
