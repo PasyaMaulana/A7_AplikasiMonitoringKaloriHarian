@@ -2,47 +2,66 @@
 {
     partial class AMKH
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.lblStatusKoneksi = new System.Windows.Forms.Label();
+            this.lblJudul = new System.Windows.Forms.Label();
+            this.lblSubJudul = new System.Windows.Forms.Label();
+            this.panelGoldLine = new System.Windows.Forms.Panel();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.lblTotalKaloriHariIni = new System.Windows.Forms.Label();
+            this.lblTotalTarget = new System.Windows.Forms.Label();
+            this.lblTotalKonsumsi = new System.Windows.Forms.Label();
+            this.grpTarget = new System.Windows.Forms.GroupBox();
+            this.lblInfoTarget = new System.Windows.Forms.Label();
+            this.btnSetTarget = new System.Windows.Forms.Button();
+            this.lblSatuanTarget = new System.Windows.Forms.Label();
+            this.txtTargetKalori = new System.Windows.Forms.TextBox();
+            this.lblTargetKalori = new System.Windows.Forms.Label();
+            this.dtpTanggalTarget = new System.Windows.Forms.DateTimePicker();
+            this.lblTanggalTarget = new System.Windows.Forms.Label();
+            this.grpInput = new System.Windows.Forms.GroupBox();
+            this.btnBersihkan = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnTambah = new System.Windows.Forms.Button();
+            this.cmbTarget = new System.Windows.Forms.ComboBox();
+            this.lblTarget = new System.Windows.Forms.Label();
+            this.dtpTanggalKonsumsi = new System.Windows.Forms.DateTimePicker();
+            this.lblTanggal = new System.Windows.Forms.Label();
+            this.txtKalori = new System.Windows.Forms.TextBox();
+            this.lblKalori = new System.Windows.Forms.Label();
+            this.txtNamaMakanan = new System.Windows.Forms.TextBox();
+            this.lblNamaMakanan = new System.Windows.Forms.Label();
+            this.panelCari = new System.Windows.Forms.Panel();
+            this.btnTampilkan = new System.Windows.Forms.Button();
+            this.btnCari = new System.Windows.Forms.Button();
+            this.txtCari = new System.Windows.Forms.TextBox();
+            this.lblCari = new System.Windows.Forms.Label();
+            this.dgvKonsumsi = new System.Windows.Forms.DataGridView();
+            this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.panelInfo.SuspendLayout();
+            this.grpTarget.SuspendLayout();
+            this.grpInput.SuspendLayout();
+            this.panelCari.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKonsumsi)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResumeLayout(false);
-
         }
-
-        #endregion
     }
 }
-
