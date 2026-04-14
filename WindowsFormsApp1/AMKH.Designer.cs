@@ -189,6 +189,17 @@
             this.grpTarget.TabIndex = 2;
             this.grpTarget.TabStop = false;
             this.grpTarget.Text = "Set Target Kalori per Tanggal";
+            // 
+            // lblInfoTarget
+            // 
+            this.lblInfoTarget.AutoSize = true;
+            this.lblInfoTarget.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfoTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(130)))), ((int)(((byte)(80)))));
+            this.lblInfoTarget.Location = new System.Drawing.Point(625, 28);
+            this.lblInfoTarget.Name = "lblInfoTarget";
+            this.lblInfoTarget.Size = new System.Drawing.Size(282, 13);
+            this.lblInfoTarget.TabIndex = 6;
+            this.lblInfoTarget.Text = "* Pilih tanggal dan isi target kalori, lalu klik Set Target";
         }
     }
 }
