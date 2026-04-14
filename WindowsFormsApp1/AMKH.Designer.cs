@@ -159,6 +159,17 @@
             this.lblTotalTarget.Size = new System.Drawing.Size(113, 15);
             this.lblTotalTarget.TabIndex = 1;
             this.lblTotalTarget.Text = "Total Data Target: -";
+            // 
+            // lblTotalKonsumsi
+            // 
+            this.lblTotalKonsumsi.AutoSize = true;
+            this.lblTotalKonsumsi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTotalKonsumsi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.lblTotalKonsumsi.Location = new System.Drawing.Point(10, 10);
+            this.lblTotalKonsumsi.Name = "lblTotalKonsumsi";
+            this.lblTotalKonsumsi.Size = new System.Drawing.Size(130, 15);
+            this.lblTotalKonsumsi.TabIndex = 0;
+            this.lblTotalKonsumsi.Text = "Total Data Konsumsi: -";
         }
     }
 }
