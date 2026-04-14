@@ -116,6 +116,15 @@
             this.lblSubJudul.Name = "lblSubJudul";
             this.lblSubJudul.Size = new System.Drawing.Size(100, 23);
             this.lblSubJudul.TabIndex = 4;
+            // 
+            // panelGoldLine
+            // 
+            this.panelGoldLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.panelGoldLine.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelGoldLine.Location = new System.Drawing.Point(0, 72);
+            this.panelGoldLine.Name = "panelGoldLine";
+            this.panelGoldLine.Size = new System.Drawing.Size(984, 3);
+            this.panelGoldLine.TabIndex = 5;
         }
     }
 }
