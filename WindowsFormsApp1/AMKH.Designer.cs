@@ -76,7 +76,17 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(984, 75);
             this.panelHeader.TabIndex = 0;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::WindowsFormsApp1.Properties.Resources._30579cc699708d1_removebg_preview;
+            this.pbLogo.Location = new System.Drawing.Point(15, 5);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(65, 65);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 3;
+            this.pbLogo.TabStop = false;
+            this.pbLogo.Click += new System.EventHandler(this.pbLogo_Click);
         }
-
     }
 }
