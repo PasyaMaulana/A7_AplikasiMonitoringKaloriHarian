@@ -200,6 +200,134 @@ namespace WindowsFormsApp1
             }
         }
 
+        // ============================================================
+        // BAGIAN E - Klik grid -> isi TextBox
+        // ============================================================
+        private void dgvKonsumsi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dgvKonsumsi.Rows[e.RowIndex];
+            selectedIdKonsumsi = Convert.ToInt32(row.Cells["id_konsumsi"].Value);
+            selectedIdTarget   = Convert.ToInt32(row.Cells["id_target"].Value);
+
+            txtNamaMakanan.Text      = row.Cells["nama_makanan"].Value.ToString();
+            txtKalori.Text           = row.Cells["kalori"].Value.ToString();
+            dtpTanggalKonsumsi.Value = Convert.ToDateTime(row.Cells["tanggal"].Value);
+            cmbTarget.SelectedValue  = selectedIdTarget;
+
+            btnUpdate.Enabled = true;
+            btnHapus.Enabled  = true;
+
+            TampilkanJumlahData();
+        }
+
+        // ============================================================
+        // Set Target per Tanggal
+        // ============================================================
+        private void btnSetTarget_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTargetKalori.Text))
+            {
+                MessageBox.Show("Masukkan target kalori terlebih dahulu!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTargetKalori.Focus(); return;
+            }
+            if (!decimal.TryParse(txtTargetKalori.Text, out decimal targetBaru) || targetBaru <= 0)
+            {
+                MessageBox.Show("Target kalori harus berupa angka lebih dari 0!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTargetKalori.Focus(); return;
+            }
+
+            DateTime tglTarget = dtpTanggalTarget.Value.Date;
+
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    SqlCommand cmdCek = new SqlCommand(
+                        "SELECT id_target FROM Target WHERE tanggal = @tgl", c);
+                    cmdCek.Parameters.AddWithValue("@tgl", tglTarget);
+                    object result = cmdCek.ExecuteScalar();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        if (MessageBox.Show(
+                            "Target untuk tanggal " + tglTarget.ToString("dd/MM/yyyy") + " sudah ada.\nYakin ingin mengubahnya?",
+                            "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+                        SqlCommand cmdUpd = new SqlCommand(
+                            "UPDATE Target SET target_kalori = @tk WHERE tanggal = @tgl", c);
+                        cmdUpd.Parameters.AddWithValue("@tk",  targetBaru);
+                        cmdUpd.Parameters.AddWithValue("@tgl", tglTarget);
+                        cmdUpd.ExecuteNonQuery();
+                        MessageBox.Show("Target tanggal " + tglTarget.ToString("dd/MM/yyyy") + " diperbarui ke " + targetBaru.ToString("N0") + " kkal!",
+                            "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        SqlCommand cmdIns = new SqlCommand(
+                            "INSERT INTO Target (target_kalori, tanggal) VALUES (@tk, @tgl)", c);
+                        cmdIns.Parameters.AddWithValue("@tk",  targetBaru);
+                        cmdIns.Parameters.AddWithValue("@tgl", tglTarget);
+                        cmdIns.ExecuteNonQuery();
+                        MessageBox.Show("Target tanggal " + tglTarget.ToString("dd/MM/yyyy") + " diset ke " + targetBaru.ToString("N0") + " kkal!",
+                            "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                txtTargetKalori.Clear();
+                LoadComboTarget();
+                TampilkanJumlahData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error set target: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ============================================================
+        // Saat tanggal konsumsi berubah -> update label + sync ComboBox
+        // ============================================================
+        private void dtpTanggalKonsumsi_ValueChanged(object sender, EventArgs e)
+        {
+            TampilkanJumlahData();
+            LoadComboTargetByTanggal(dtpTanggalKonsumsi.Value.Date);
+        }
+
+        private void LoadComboTargetByTanggal(DateTime tgl)
+        {
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(
+                        @"SELECT id_target,
+                                 CAST(target_kalori AS VARCHAR) + ' kkal - ' +
+                                 CONVERT(VARCHAR, tanggal, 103) AS keterangan
+                          FROM Target WHERE tanggal = @tgl", c);
+                    da.SelectCommand.Parameters.AddWithValue("@tgl", tgl);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        cmbTarget.DataSource    = dt;
+                        cmbTarget.DisplayMember = "keterangan";
+                        cmbTarget.ValueMember   = "id_target";
+                    }
+                    else
+                    {
+                        LoadComboTarget();
+                    }
+                }
+            }
+            catch { LoadComboTarget(); }
+        }
+
         }
     }
 }
