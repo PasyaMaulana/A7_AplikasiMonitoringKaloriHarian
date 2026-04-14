@@ -259,6 +259,17 @@
             this.dtpTanggalTarget.Size = new System.Drawing.Size(130, 23);
             this.dtpTanggalTarget.TabIndex = 1;
             this.dtpTanggalTarget.Value = new System.DateTime(2026, 4, 15, 0, 0, 0, 0);
+            // 
+            // lblTanggalTarget
+            //
+            this.lblTanggalTarget.AutoSize = true;
+            this.lblTanggalTarget.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblTanggalTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(185)))), ((int)(((byte)(120)))));
+            this.lblTanggalTarget.Location = new System.Drawing.Point(15, 28);
+            this.lblTanggalTarget.Name = "lblTanggalTarget";
+            this.lblTanggalTarget.Size = new System.Drawing.Size(91, 15);
+            this.lblTanggalTarget.TabIndex = 0;
+            this.lblTanggalTarget.Text = "Tanggal Target :";
         }
     }
 }
