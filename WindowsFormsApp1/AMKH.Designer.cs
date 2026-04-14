@@ -294,6 +294,21 @@
             this.grpInput.TabIndex = 3;
             this.grpInput.TabStop = false;
             this.grpInput.Text = "Input Data Konsumsi";
+            // 
+            // btnBersihkan
+            // 
+            this.btnBersihkan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(65)))));
+            this.btnBersihkan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            this.btnBersihkan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBersihkan.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBersihkan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(205)))), ((int)(((byte)(150)))));
+            this.btnBersihkan.Location = new System.Drawing.Point(730, 62);
+            this.btnBersihkan.Name = "btnBersihkan";
+            this.btnBersihkan.Size = new System.Drawing.Size(90, 30);
+            this.btnBersihkan.TabIndex = 11;
+            this.btnBersihkan.Text = "Bersihkan";
+            this.btnBersihkan.UseVisualStyleBackColor = false;
+            this.btnBersihkan.Click += new System.EventHandler(this.btnBersihkan_Click);
         }
     }
 }
