@@ -200,6 +200,21 @@
             this.lblInfoTarget.Size = new System.Drawing.Size(282, 13);
             this.lblInfoTarget.TabIndex = 6;
             this.lblInfoTarget.Text = "* Pilih tanggal dan isi target kalori, lalu klik Set Target";
+            // 
+            // btnSetTarget
+            //
+            this.btnSetTarget.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(140)))), ((int)(((byte)(20)))));
+            this.btnSetTarget.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnSetTarget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetTarget.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSetTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.btnSetTarget.Location = new System.Drawing.Point(500, 22);
+            this.btnSetTarget.Name = "btnSetTarget";
+            this.btnSetTarget.Size = new System.Drawing.Size(110, 28);
+            this.btnSetTarget.TabIndex = 5;
+            this.btnSetTarget.Text = "Set Target";
+            this.btnSetTarget.UseVisualStyleBackColor = false;
+            this.btnSetTarget.Click += new System.EventHandler(this.btnSetTarget_Click);
         }
     }
 }
