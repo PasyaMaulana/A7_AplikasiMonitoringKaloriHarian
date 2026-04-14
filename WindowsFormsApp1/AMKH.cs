@@ -15,16 +15,42 @@ namespace WindowsFormsApp1
     {
         private string connectionString = "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
         private int selectedIdKonsumsi = -1;
-        private int selectedIdTarget = -1;
+        private int selectedIdTarget   = -1;
 
         public AMKH()
         {
             InitializeComponent();
         }
 
+        // ============================================================
+        // BAGIAN B - Status Koneksi
+        // ============================================================
         private void Form1_Load(object sender, EventArgs e)
         {
+            CekStatusKoneksi();
+            LoadComboTarget();
+            TampilkanJumlahData();
+            TampilkanData();
+        }
 
+        private void CekStatusKoneksi()
+        {
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    lblStatusKoneksi.Text      = "● Status Koneksi: TERHUBUNG";
+                    lblStatusKoneksi.ForeColor = Color.LimeGreen;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatusKoneksi.Text      = "● Status Koneksi: GAGAL";
+                lblStatusKoneksi.ForeColor = Color.Red;
+                MessageBox.Show("Gagal terhubung ke database!\n\n" + ex.Message,
+                    "Error Koneksi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
