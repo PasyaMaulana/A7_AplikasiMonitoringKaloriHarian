@@ -13,6 +13,10 @@ namespace WindowsFormsApp1
 {
     public partial class AMKH : Form
     {
+        private string connectionString = "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
+        private int selectedIdKonsumsi = -1;
+        private int selectedIdTarget = -1;
+
         public AMKH()
         {
             InitializeComponent();
