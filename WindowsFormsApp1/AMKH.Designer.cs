@@ -109,6 +109,13 @@
             this.lblJudul.Size = new System.Drawing.Size(331, 28);
             this.lblJudul.TabIndex = 0;
             this.lblJudul.Text = "Aplikasi Monitoring Kalori Harian";
+            // 
+            // lblSubJudul
+            // 
+            this.lblSubJudul.Location = new System.Drawing.Point(0, 0);
+            this.lblSubJudul.Name = "lblSubJudul";
+            this.lblSubJudul.Size = new System.Drawing.Size(100, 23);
+            this.lblSubJudul.TabIndex = 4;
         }
     }
 }
