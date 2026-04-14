@@ -62,6 +62,21 @@
             this.panelCari.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKonsumsi)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelHeader.Controls.Add(this.pbLogo);
+            this.panelHeader.Controls.Add(this.lblStatusKoneksi);
+            this.panelHeader.Controls.Add(this.lblJudul);
+            this.panelHeader.Controls.Add(this.lblSubJudul);
+            this.panelHeader.Controls.Add(this.panelGoldLine);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(984, 75);
+            this.panelHeader.TabIndex = 0;
         }
+
     }
 }
