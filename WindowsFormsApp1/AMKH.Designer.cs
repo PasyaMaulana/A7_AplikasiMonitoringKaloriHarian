@@ -215,6 +215,17 @@
             this.btnSetTarget.Text = "Set Target";
             this.btnSetTarget.UseVisualStyleBackColor = false;
             this.btnSetTarget.Click += new System.EventHandler(this.btnSetTarget_Click);
+            // 
+            // lblSatuanTarget
+            // 
+            this.lblSatuanTarget.AutoSize = true;
+            this.lblSatuanTarget.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSatuanTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(160)))), ((int)(((byte)(80)))));
+            this.lblSatuanTarget.Location = new System.Drawing.Point(467, 28);
+            this.lblSatuanTarget.Name = "lblSatuanTarget";
+            this.lblSatuanTarget.Size = new System.Drawing.Size(28, 15);
+            this.lblSatuanTarget.TabIndex = 4;
+            this.lblSatuanTarget.Text = "kkal";
         }
     }
 }
