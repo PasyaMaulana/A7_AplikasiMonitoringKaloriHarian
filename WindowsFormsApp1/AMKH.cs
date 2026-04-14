@@ -155,6 +155,51 @@ namespace WindowsFormsApp1
             }
         }
 
+        // ============================================================
+        // BAGIAN E - Pencarian
+        // ============================================================
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            string keyword = txtCari.Text.Trim();
+            if (string.IsNullOrEmpty(keyword)) { TampilkanData(); return; }
+
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    string query = @"
+                        SELECT k.id_konsumsi, k.id_target, t.target_kalori,
+                               k.nama_makanan, k.kalori, k.tanggal
+                        FROM   Konsumsi k
+                        INNER JOIN Target t ON k.id_target = t.id_target
+                        WHERE  k.nama_makanan LIKE @keyword
+                        ORDER  BY k.tanggal DESC";
+
+                    SqlCommand cmd = new SqlCommand(query, c);
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable     dt     = new DataTable();
+                    dt.Load(reader);
+                    dgvKonsumsi.DataSource = dt;
+
+                    if (dgvKonsumsi.Columns.Count > 0)
+                    {
+                        dgvKonsumsi.Columns["id_konsumsi"].Visible = false;
+                        dgvKonsumsi.Columns["id_target"].Visible   = false;
+                    }
+
+                    lblTotalKonsumsi.Text = "Hasil Pencarian: " + dt.Rows.Count + " record";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error pencarian: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         }
     }
 }
