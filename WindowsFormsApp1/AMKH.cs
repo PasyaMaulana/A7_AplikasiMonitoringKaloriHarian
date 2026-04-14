@@ -328,6 +328,147 @@ namespace WindowsFormsApp1
             catch { LoadComboTarget(); }
         }
 
+        // ============================================================
+        // BAGIAN D - INSERT
+        // ============================================================
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            if (!ValidasiInput()) return;
+
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    DateTime tglKonsumsi = dtpTanggalKonsumsi.Value.Date;
+
+                    SqlCommand cmdCek = new SqlCommand(
+                        "SELECT id_target FROM Target WHERE tanggal = @tgl", c);
+                    cmdCek.Parameters.AddWithValue("@tgl", tglKonsumsi);
+                    object result = cmdCek.ExecuteScalar();
+
+                    int idTarget;
+                    if (result == null || result == DBNull.Value)
+                    {
+                        SqlCommand cmdTarget = new SqlCommand(
+                            "INSERT INTO Target (target_kalori, tanggal) OUTPUT INSERTED.id_target VALUES (@tk, @tgl)", c);
+                        cmdTarget.Parameters.AddWithValue("@tk",  2000);
+                        cmdTarget.Parameters.AddWithValue("@tgl", tglKonsumsi);
+                        idTarget = (int)cmdTarget.ExecuteScalar();
+                    }
+                    else idTarget = Convert.ToInt32(result);
+
+                    SqlCommand cmd = new SqlCommand(
+                        @"INSERT INTO Konsumsi (id_target, nama_makanan, kalori, tanggal)
+                          VALUES (@id_target, @nama, @kalori, @tgl)", c);
+                    cmd.Parameters.AddWithValue("@id_target", idTarget);
+                    cmd.Parameters.AddWithValue("@nama",      txtNamaMakanan.Text.Trim());
+                    cmd.Parameters.AddWithValue("@kalori",    decimal.Parse(txtKalori.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@tgl",       tglKonsumsi);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Data berhasil ditambahkan!", "Sukses",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BersihkanForm();
+                        TampilkanData();
+                        LoadComboTarget();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error INSERT: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ============================================================
+        // BAGIAN D - UPDATE
+        // ============================================================
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (selectedIdKonsumsi == -1)
+            {
+                MessageBox.Show("Pilih data yang ingin diubah!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!ValidasiInput()) return;
+
+            if (MessageBox.Show("Yakin ingin mengubah data ini?", "Konfirmasi Update",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        @"UPDATE Konsumsi
+                          SET nama_makanan = @nama, kalori = @kalori, tanggal = @tgl
+                          WHERE id_konsumsi = @id", c);
+                    cmd.Parameters.AddWithValue("@nama",   txtNamaMakanan.Text.Trim());
+                    cmd.Parameters.AddWithValue("@kalori", decimal.Parse(txtKalori.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@tgl",    dtpTanggalKonsumsi.Value.Date);
+                    cmd.Parameters.AddWithValue("@id",     selectedIdKonsumsi);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Data berhasil diubah!", "Sukses",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BersihkanForm();
+                        TampilkanData();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error UPDATE: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ============================================================
+        // BAGIAN D - DELETE
+        // ============================================================
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (selectedIdKonsumsi == -1)
+            {
+                MessageBox.Show("Pilih data yang ingin dihapus!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("Yakin ingin menghapus data ini?\nTidak dapat dibatalkan!",
+                    "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        "DELETE FROM Konsumsi WHERE id_konsumsi = @id", c);
+                    cmd.Parameters.AddWithValue("@id", selectedIdKonsumsi);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Data berhasil dihapus!", "Sukses",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        BersihkanForm();
+                        TampilkanData();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error DELETE: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+     
         }
     }
 }
