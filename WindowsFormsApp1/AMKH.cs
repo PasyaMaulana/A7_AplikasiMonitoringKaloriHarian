@@ -468,7 +468,32 @@ namespace WindowsFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-     
+
+        // ============================================================
+        // Tombol Tampilkan & Bersihkan
+        // ============================================================
+        private void btnTampilkan_Click(object sender, EventArgs e)
+        {
+            txtCari.Clear();
+            TampilkanData();
+        }
+
+        private void btnBersihkan_Click(object sender, EventArgs e)
+        {
+            BersihkanForm();
+        }
+
+        private void BersihkanForm()
+        {
+            txtNamaMakanan.Clear();
+            txtKalori.Clear();
+            txtCari.Clear();
+            dtpTanggalKonsumsi.Value = DateTime.Today;
+            selectedIdKonsumsi       = -1;
+            selectedIdTarget         = -1;
+            btnUpdate.Enabled        = false;
+            btnHapus.Enabled         = false;
+            if (cmbTarget.Items.Count > 0) cmbTarget.SelectedIndex = 0;
         }
     }
 }
