@@ -226,6 +226,17 @@
             this.lblSatuanTarget.Size = new System.Drawing.Size(28, 15);
             this.lblSatuanTarget.TabIndex = 4;
             this.lblSatuanTarget.Text = "kkal";
+            // 
+            // txtTargetKalori
+            // 
+            this.txtTargetKalori.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(52)))), ((int)(((byte)(40)))));
+            this.txtTargetKalori.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTargetKalori.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTargetKalori.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(200)))), ((int)(((byte)(80)))));
+            this.txtTargetKalori.Location = new System.Drawing.Point(360, 25);
+            this.txtTargetKalori.Name = "txtTargetKalori";
+            this.txtTargetKalori.Size = new System.Drawing.Size(100, 23);
+            this.txtTargetKalori.TabIndex = 3;
         }
     }
 }
