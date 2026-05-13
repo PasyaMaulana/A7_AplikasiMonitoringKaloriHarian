@@ -90,5 +90,25 @@ namespace WindowsFormsApp1
             BukaForm(new FormRiwayat());
             SetNavbarAktif(btnNavRiwayat);
         }
+
+        // ── Highlight tombol navbar yang aktif ───────────
+        private void SetNavbarAktif(Button btnAktif)
+        {
+            Button[] tombolNav =
+            {
+                btnNavKonsumsi,
+                btnNavAktivitas,
+                btnNavRiwayat
+            };
+
+            foreach (var btn in tombolNav)
+            {
+                btn.BackColor = Color.FromArgb(50, 50, 45);
+                btn.ForeColor = Color.FromArgb(200, 185, 120);
+            }
+
+            btnAktif.BackColor = Color.FromArgb(180, 140, 20);
+            btnAktif.ForeColor = Color.FromArgb(28, 28, 28);
+        }
     }
 }
