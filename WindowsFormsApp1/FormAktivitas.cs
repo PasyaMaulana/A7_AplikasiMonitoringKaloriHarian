@@ -154,5 +154,43 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
+
+        // ── Set Target via SP ─────────────────────────────
+        private void btnSetTarget_Click(object sender, EventArgs e)
+        {
+            if (!decimal.TryParse(txtTargetKalori.Text, out decimal target) || target <= 0)
+            {
+                MessageBox.Show("Target kalori harus angka lebih dari 0!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    var cmd = new SqlCommand("sp_SetTarget", c)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggalTarget.Value.Date);
+                    cmd.Parameters.AddWithValue("@target_kalori", target);
+                    var pIsUpdate = cmd.Parameters.Add("@is_update", SqlDbType.Bit);
+                    pIsUpdate.Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
+
+                    bool isUpdate = (bool)pIsUpdate.Value;
+                    MessageBox.Show(
+                        "Target berhasil " + (isUpdate ? "diperbarui" : "disimpan") + "!",
+                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtTargetKalori.Clear();
+                    TampilkanInfoAktivitas();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error set target: " + ex.Message);
+            }
+        }
     }
 }
