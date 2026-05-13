@@ -259,5 +259,37 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error update: " + ex.Message);
             }
         }
+
+        // ── Hapus via SP sp_HapusAktivitas ───────────────
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (selectedId == -1) return;
+            if (MessageBox.Show("Yakin ingin menghapus?", "Konfirmasi",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    var cmd = new SqlCommand("sp_HapusAktivitas", c)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@id_aktivitas", selectedId);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Aktivitas berhasil dihapus!", "Sukses",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BersihkanForm();
+                    MuatData();
+                    TampilkanInfoAktivitas();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hapus: " + ex.Message);
+            }
+        }
     }
 }
