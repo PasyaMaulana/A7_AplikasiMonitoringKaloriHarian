@@ -72,5 +72,23 @@ namespace WindowsFormsApp1
             form.Show();
         }
 
+        // ── Navbar Handlers ──────────────────────────────
+        private void btnNavKonsumsi_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FormKonsumsi());
+            SetNavbarAktif(btnNavKonsumsi);
+        }
+
+        private void btnNavAktivitas_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FormAktivitas());
+            SetNavbarAktif(btnNavAktivitas);
+        }
+
+        private void btnNavRiwayat_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FormRiwayat());
+            SetNavbarAktif(btnNavRiwayat);
+        }
     }
 }
