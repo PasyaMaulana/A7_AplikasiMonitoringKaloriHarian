@@ -223,5 +223,41 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error tambah: " + ex.Message);
             }
         }
+
+        // ── Update via SP sp_UpdateAktivitas ─────────────
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (selectedId == -1) return;
+            if (!ValidasiInput()) return;
+            if (MessageBox.Show("Yakin ingin mengubah?", "Konfirmasi",
+                MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    var cmd = new SqlCommand("sp_UpdateAktivitas", c)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@id_aktivitas", selectedId);
+                    cmd.Parameters.AddWithValue("@nama_aktivitas", txtNamaAktivitas.Text.Trim());
+                    cmd.Parameters.AddWithValue("@kalori_terbakar", decimal.Parse(txtKaloriTerbakar.Text.Trim()));
+                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggal.Value.Date);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Aktivitas berhasil diubah!", "Sukses",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BersihkanForm();
+                    MuatData();
+                    TampilkanInfoAktivitas();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error update: " + ex.Message);
+            }
+        }
     }
 }
