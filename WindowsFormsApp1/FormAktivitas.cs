@@ -332,5 +332,40 @@ namespace WindowsFormsApp1
             btnHapus.Enabled = false;
         }
 
+        // ── Validasi ─────────────────────────────────────
+        private bool ValidasiInput()
+        {
+            string nama = txtNamaAktivitas.Text.Trim();
+
+            // 1. kosong / terlalu pendek
+            if (string.IsNullOrWhiteSpace(nama) || nama.Length < 3)
+            {
+                MessageBox.Show("Nama aktivitas minimal 3 karakter!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNamaAktivitas.Focus();
+                return false;
+            }
+
+            // 2. tidak boleh ada angka
+            if (nama.Any(char.IsDigit))
+            {
+                MessageBox.Show("Nama aktivitas tidak boleh mengandung angka!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNamaAktivitas.Focus();
+                return false;
+            }
+
+            // 3. validasi kalori
+            if (!decimal.TryParse(txtKaloriTerbakar.Text, out decimal kal) ||
+                kal < 0 || kal > 5000)
+            {
+                MessageBox.Show("Kalori terbakar harus angka antara 0-5000!", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtKaloriTerbakar.Focus();
+                return false;
+            }
+
+            return true;
+        }
     }
 }
