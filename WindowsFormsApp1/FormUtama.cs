@@ -24,5 +24,13 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        private void FormUtama_Load(object sender, EventArgs e)
+        {
+            CekKoneksi();
+
+            // Buka konsumsi sebagai default
+            BukaForm(new FormKonsumsi());
+            SetNavbarAktif(btnNavKonsumsi);
+        }
     }
 }
