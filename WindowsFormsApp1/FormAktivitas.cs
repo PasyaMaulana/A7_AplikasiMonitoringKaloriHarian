@@ -291,5 +291,11 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error hapus: " + ex.Message);
             }
         }
+
+        private void btnTampilkan_Click(object sender, EventArgs e)
+        {
+            txtCari.Clear();
+            MuatData();
+        }
     }
 }
