@@ -83,5 +83,25 @@ namespace WindowsFormsApp1
                 dgvAktivitas.Columns["tanggal"].HeaderText = "Tanggal";
         }
 
+        // ── Hitung total via OUTPUT PARAMETER ────────────
+        private void HitungTotal()
+        {
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    var cmd = new SqlCommand("sp_CountAktivitas", c)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    var pTotal = cmd.Parameters.Add("@total", SqlDbType.Int);
+                    pTotal.Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
+                    lblTotalRecord.Text = "Total: " + pTotal.Value + " record aktif";
+                }
+            }
+            catch { }
+        }
     }
 }
