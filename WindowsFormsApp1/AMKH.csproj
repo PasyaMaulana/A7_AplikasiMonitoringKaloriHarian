@@ -46,11 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AMKHDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FormAktivitas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAktivitas.Designer.cs">
       <DependentUpon>FormAktivitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRiwayat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRiwayat.Designer.cs">
+      <DependentUpon>FormRiwayat.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUtama.cs">
       <SubType>Form</SubType>
@@ -62,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAktivitas.resx">
       <DependentUpon>FormAktivitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRiwayat.resx">
+      <DependentUpon>FormRiwayat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUtama.resx">
       <DependentUpon>FormUtama.cs</DependentUpon>
@@ -76,6 +90,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="AMKHDataSet.xsc">
+      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AMKHDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AMKHDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AMKHDataSet.xss">
+      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
