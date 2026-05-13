@@ -318,5 +318,19 @@ namespace WindowsFormsApp1
         {
             TampilkanInfoAktivitas();
         }
+
+        private void btnBersihkan_Click(object sender, EventArgs e) => BersihkanForm();
+
+        private void BersihkanForm()
+        {
+            txtNamaAktivitas.Clear();
+            txtKaloriTerbakar.Clear();
+            txtCari.Clear();
+            dtpTanggal.Value = DateTime.Today;
+            selectedId = -1;
+            btnUpdate.Enabled = false;
+            btnHapus.Enabled = false;
+        }
+
     }
 }
