@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,4 +42,28 @@ namespace WindowsFormsApp1
             TampilkanInfoAktivitas();
 
         }
+
+        // ── Load data via VIEW vw_AktivitasAktif ─────────
+        private void MuatData()
+        {
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    var da = new SqlDataAdapter(
+                        "SELECT * FROM vw_AktivitasAktif ORDER BY tanggal DESC, id_aktivitas DESC", c);
+                    var dt = new DataTable();
+                    da.Fill(dt);
+                    bindingSource.DataSource = dt;
+                    AturKolom();
+                }
+                HitungTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error load data: " + ex.Message);
+            }
+        }
+    }
 }
