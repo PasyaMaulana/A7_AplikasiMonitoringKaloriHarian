@@ -65,5 +65,23 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Error load data: " + ex.Message);
             }
         }
+
+        private void AturKolom()
+        {
+            if (dgvAktivitas.Columns.Count == 0) return;
+            if (dgvAktivitas.Columns.Contains("id_aktivitas"))
+                dgvAktivitas.Columns["id_aktivitas"].Visible = false;
+            if (dgvAktivitas.Columns.Contains("id_target"))
+                dgvAktivitas.Columns["id_target"].Visible = false;
+            if (dgvAktivitas.Columns.Contains("target_kalori"))
+                dgvAktivitas.Columns["target_kalori"].HeaderText = "Target Kalori";
+            if (dgvAktivitas.Columns.Contains("nama_aktivitas"))
+                dgvAktivitas.Columns["nama_aktivitas"].HeaderText = "Nama Aktivitas";
+            if (dgvAktivitas.Columns.Contains("kalori_terbakar"))
+                dgvAktivitas.Columns["kalori_terbakar"].HeaderText = "Kalori Terbakar";
+            if (dgvAktivitas.Columns.Contains("tanggal"))
+                dgvAktivitas.Columns["tanggal"].HeaderText = "Tanggal";
+        }
+
     }
 }
