@@ -103,5 +103,56 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
+
+        // ── Info kalori terbakar hari ini ─────────────────
+        private void TampilkanInfoAktivitas()
+        {
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    DateTime tgl = dtpTanggal.Value.Date;
+
+                    var cmd = new SqlCommand(
+                        "SELECT ISNULL(SUM(kalori_terbakar),0) FROM Aktivitas WHERE tanggal=@tgl", c);
+                    cmd.Parameters.AddWithValue("@tgl", tgl);
+                    decimal totalTerbakar = (decimal)cmd.ExecuteScalar();
+
+                    // Ambil target kalori hari itu
+                    var cmdTgt = new SqlCommand(
+                        "SELECT ISNULL(target_kalori,0) FROM Target WHERE tanggal=@tgl", c);
+                    cmdTgt.Parameters.AddWithValue("@tgl", tgl);
+                    object tRes = cmdTgt.ExecuteScalar();
+                    decimal target = (tRes != null && tRes != DBNull.Value) ? (decimal)tRes : 0;
+
+                    // Ambil total konsumsi hari itu
+                    var cmdKon = new SqlCommand(
+                        "SELECT ISNULL(SUM(kalori),0) FROM Konsumsi WHERE tanggal=@tgl", c);
+                    cmdKon.Parameters.AddWithValue("@tgl", tgl);
+                    decimal totalMasuk = (decimal)cmdKon.ExecuteScalar();
+
+                    decimal bersih = totalMasuk - totalTerbakar;
+
+                    lblInfoAktivitas.Text =
+                        tgl.ToString("dd/MM/yyyy") +
+                        " — Masuk: " + totalMasuk.ToString("N0") + " kkal" +
+                        " | Terbakar: " + totalTerbakar.ToString("N0") + " kkal" +
+                        " | Bersih: " + bersih.ToString("N0") + " kkal";
+
+                    if (target > 0)
+                    {
+                        lblInfoAktivitas.ForeColor = bersih <= target
+                            ? Color.LimeGreen
+                            : Color.Red;
+                    }
+                    else
+                    {
+                        lblInfoAktivitas.ForeColor = Color.FromArgb(255, 200, 60);
+                    }
+                }
+            }
+            catch { }
+        }
     }
 }
