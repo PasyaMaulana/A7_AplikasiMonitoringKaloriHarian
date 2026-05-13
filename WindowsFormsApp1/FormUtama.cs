@@ -51,5 +51,26 @@ namespace WindowsFormsApp1
                 lblStatusKoneksi.ForeColor = Color.Red;
             }
         }
+
+        // ── Buka Form di Panel Konten ─────────────────────
+        private void BukaForm(Form form)
+        {
+            // Tutup form sebelumnya
+            if (formAktif != null)
+            {
+                formAktif.Close();
+                formAktif = null;
+            }
+
+            formAktif = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            panelKonten.Controls.Clear();
+            panelKonten.Controls.Add(form);
+            form.Show();
+        }
+
     }
 }
