@@ -16,7 +16,13 @@ namespace WindowsFormsApp1
         private string connectionString =
             "Server=PASYA\\PASYA;Database=AMKH;Integrated Security=True;";
 
-        private BindingSource bindingSource = new BindingSource();
-        private int selectedId = -1;
+        // Form child yang aktif
+        private Form formAktif = null;
+
+        public FormUtama()
+        {
+            InitializeComponent();
+        }
+
     }
 }
