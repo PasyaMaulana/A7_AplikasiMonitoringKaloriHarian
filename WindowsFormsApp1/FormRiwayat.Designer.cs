@@ -32,9 +32,25 @@
             this.grpKonsumsi = new System.Windows.Forms.GroupBox();
             this.lblJmlKonsumsi = new System.Windows.Forms.Label();
             this.dgvRiwayatKonsumsi = new System.Windows.Forms.DataGridView();
+            this.idkonsumsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idtargetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetkaloriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namaitemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kaloriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwKonsumsiAktifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aMKH_DBDataSet = new WindowsFormsApp1.AMKH_DBDataSet();
             this.grpAktivitas = new System.Windows.Forms.GroupBox();
             this.lblJmlAktivitas = new System.Windows.Forms.Label();
             this.dgvRiwayatAktivitas = new System.Windows.Forms.DataGridView();
+            this.idaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idtargetDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetkaloriDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namaaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kaloriterbakarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tanggalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vwRiwayatAktivitasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,25 +81,9 @@
             this.bindingNavigatorMoveNextItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.aMKH_DBDataSet = new WindowsFormsApp1.AMKH_DBDataSet();
-            this.vwKonsumsiAktifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vw_KonsumsiAktifTableAdapter = new WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_KonsumsiAktifTableAdapter();
-            this.idkonsumsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtargetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetkaloriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namaitemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kaloriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vwAktivitasAktifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vw_AktivitasAktifTableAdapter = new WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_AktivitasAktifTableAdapter();
-            this.idaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtargetDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetkaloriDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namaaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kaloriterbakarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tanggalDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vwRiwayatAktivitasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vw_RiwayatAktivitasTableAdapter = new WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_RiwayatAktivitasTableAdapter();
             this.vwRiwayatKonsumsiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vw_RiwayatKonsumsiTableAdapter = new WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_RiwayatKonsumsiTableAdapter();
@@ -92,16 +92,16 @@
             this.panelRingkasan.SuspendLayout();
             this.grpKonsumsi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatKonsumsi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).BeginInit();
             this.grpAktivitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatAktivitas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatAktivitasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).BeginInit();
             this.bindingNavigator2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatAktivitasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatKonsumsiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -317,6 +317,65 @@
             this.dgvRiwayatKonsumsi.Size = new System.Drawing.Size(1021, 178);
             this.dgvRiwayatKonsumsi.TabIndex = 0;
             // 
+            // idkonsumsiDataGridViewTextBoxColumn
+            // 
+            this.idkonsumsiDataGridViewTextBoxColumn.DataPropertyName = "id_konsumsi";
+            this.idkonsumsiDataGridViewTextBoxColumn.HeaderText = "id_konsumsi";
+            this.idkonsumsiDataGridViewTextBoxColumn.Name = "idkonsumsiDataGridViewTextBoxColumn";
+            this.idkonsumsiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idtargetDataGridViewTextBoxColumn
+            // 
+            this.idtargetDataGridViewTextBoxColumn.DataPropertyName = "id_target";
+            this.idtargetDataGridViewTextBoxColumn.HeaderText = "id_target";
+            this.idtargetDataGridViewTextBoxColumn.Name = "idtargetDataGridViewTextBoxColumn";
+            this.idtargetDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // targetkaloriDataGridViewTextBoxColumn
+            // 
+            this.targetkaloriDataGridViewTextBoxColumn.DataPropertyName = "target_kalori";
+            this.targetkaloriDataGridViewTextBoxColumn.HeaderText = "target_kalori";
+            this.targetkaloriDataGridViewTextBoxColumn.Name = "targetkaloriDataGridViewTextBoxColumn";
+            this.targetkaloriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // namaitemDataGridViewTextBoxColumn
+            // 
+            this.namaitemDataGridViewTextBoxColumn.DataPropertyName = "nama_item";
+            this.namaitemDataGridViewTextBoxColumn.HeaderText = "nama_item";
+            this.namaitemDataGridViewTextBoxColumn.Name = "namaitemDataGridViewTextBoxColumn";
+            this.namaitemDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kaloriDataGridViewTextBoxColumn
+            // 
+            this.kaloriDataGridViewTextBoxColumn.DataPropertyName = "kalori";
+            this.kaloriDataGridViewTextBoxColumn.HeaderText = "kalori";
+            this.kaloriDataGridViewTextBoxColumn.Name = "kaloriDataGridViewTextBoxColumn";
+            this.kaloriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipeDataGridViewTextBoxColumn
+            // 
+            this.tipeDataGridViewTextBoxColumn.DataPropertyName = "tipe";
+            this.tipeDataGridViewTextBoxColumn.HeaderText = "tipe";
+            this.tipeDataGridViewTextBoxColumn.Name = "tipeDataGridViewTextBoxColumn";
+            this.tipeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tanggalDataGridViewTextBoxColumn
+            // 
+            this.tanggalDataGridViewTextBoxColumn.DataPropertyName = "tanggal";
+            this.tanggalDataGridViewTextBoxColumn.HeaderText = "tanggal";
+            this.tanggalDataGridViewTextBoxColumn.Name = "tanggalDataGridViewTextBoxColumn";
+            this.tanggalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vwKonsumsiAktifBindingSource
+            // 
+            this.vwKonsumsiAktifBindingSource.DataMember = "vw_KonsumsiAktif";
+            this.vwKonsumsiAktifBindingSource.DataSource = this.aMKH_DBDataSet;
+            // 
+            // aMKH_DBDataSet
+            // 
+            this.aMKH_DBDataSet.DataSetName = "AMKH_DBDataSet";
+            this.aMKH_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // grpAktivitas
             // 
             this.grpAktivitas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(34)))));
@@ -364,6 +423,53 @@
             this.dgvRiwayatAktivitas.Size = new System.Drawing.Size(1021, 178);
             this.dgvRiwayatAktivitas.TabIndex = 0;
             // 
+            // idaktivitasDataGridViewTextBoxColumn
+            // 
+            this.idaktivitasDataGridViewTextBoxColumn.DataPropertyName = "id_aktivitas";
+            this.idaktivitasDataGridViewTextBoxColumn.HeaderText = "id_aktivitas";
+            this.idaktivitasDataGridViewTextBoxColumn.Name = "idaktivitasDataGridViewTextBoxColumn";
+            this.idaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idtargetDataGridViewTextBoxColumn1
+            // 
+            this.idtargetDataGridViewTextBoxColumn1.DataPropertyName = "id_target";
+            this.idtargetDataGridViewTextBoxColumn1.HeaderText = "id_target";
+            this.idtargetDataGridViewTextBoxColumn1.Name = "idtargetDataGridViewTextBoxColumn1";
+            this.idtargetDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // targetkaloriDataGridViewTextBoxColumn1
+            // 
+            this.targetkaloriDataGridViewTextBoxColumn1.DataPropertyName = "target_kalori";
+            this.targetkaloriDataGridViewTextBoxColumn1.HeaderText = "target_kalori";
+            this.targetkaloriDataGridViewTextBoxColumn1.Name = "targetkaloriDataGridViewTextBoxColumn1";
+            this.targetkaloriDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // namaaktivitasDataGridViewTextBoxColumn
+            // 
+            this.namaaktivitasDataGridViewTextBoxColumn.DataPropertyName = "nama_aktivitas";
+            this.namaaktivitasDataGridViewTextBoxColumn.HeaderText = "nama_aktivitas";
+            this.namaaktivitasDataGridViewTextBoxColumn.Name = "namaaktivitasDataGridViewTextBoxColumn";
+            this.namaaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kaloriterbakarDataGridViewTextBoxColumn
+            // 
+            this.kaloriterbakarDataGridViewTextBoxColumn.DataPropertyName = "kalori_terbakar";
+            this.kaloriterbakarDataGridViewTextBoxColumn.HeaderText = "kalori_terbakar";
+            this.kaloriterbakarDataGridViewTextBoxColumn.Name = "kaloriterbakarDataGridViewTextBoxColumn";
+            this.kaloriterbakarDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tanggalDataGridViewTextBoxColumn1
+            // 
+            this.tanggalDataGridViewTextBoxColumn1.DataPropertyName = "tanggal";
+            this.tanggalDataGridViewTextBoxColumn1.HeaderText = "tanggal";
+            this.tanggalDataGridViewTextBoxColumn1.Name = "tanggalDataGridViewTextBoxColumn1";
+            this.tanggalDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // vwRiwayatAktivitasBindingSource
+            // 
+            this.vwRiwayatAktivitasBindingSource.DataMember = "vw_RiwayatAktivitas";
+            this.vwRiwayatAktivitasBindingSource.DataSource = this.aMKH_DBDataSet;
+            // 
             // bindingNavigatorAddNewItem
             // 
             this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -409,6 +515,7 @@
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem2;
+            this.bindingNavigator1.BindingSource = this.vwRiwayatAktivitasBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem2;
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -524,6 +631,7 @@
             // bindingNavigator2
             // 
             this.bindingNavigator2.AddNewItem = this.bindingNavigatorAddNewItem3;
+            this.bindingNavigator2.BindingSource = this.vwRiwayatKonsumsiBindingSource;
             this.bindingNavigator2.CountItem = this.bindingNavigatorCountItem1;
             this.bindingNavigator2.DeleteItem = this.bindingNavigatorDeleteItem3;
             this.bindingNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -636,68 +744,9 @@
             this.bindingNavigatorSeparator7.Name = "bindingNavigatorSeparator7";
             this.bindingNavigatorSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // aMKH_DBDataSet
-            // 
-            this.aMKH_DBDataSet.DataSetName = "AMKH_DBDataSet";
-            this.aMKH_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vwKonsumsiAktifBindingSource
-            // 
-            this.vwKonsumsiAktifBindingSource.DataMember = "vw_KonsumsiAktif";
-            this.vwKonsumsiAktifBindingSource.DataSource = this.aMKH_DBDataSet;
-            // 
             // vw_KonsumsiAktifTableAdapter
             // 
             this.vw_KonsumsiAktifTableAdapter.ClearBeforeFill = true;
-            // 
-            // idkonsumsiDataGridViewTextBoxColumn
-            // 
-            this.idkonsumsiDataGridViewTextBoxColumn.DataPropertyName = "id_konsumsi";
-            this.idkonsumsiDataGridViewTextBoxColumn.HeaderText = "id_konsumsi";
-            this.idkonsumsiDataGridViewTextBoxColumn.Name = "idkonsumsiDataGridViewTextBoxColumn";
-            this.idkonsumsiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idtargetDataGridViewTextBoxColumn
-            // 
-            this.idtargetDataGridViewTextBoxColumn.DataPropertyName = "id_target";
-            this.idtargetDataGridViewTextBoxColumn.HeaderText = "id_target";
-            this.idtargetDataGridViewTextBoxColumn.Name = "idtargetDataGridViewTextBoxColumn";
-            this.idtargetDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // targetkaloriDataGridViewTextBoxColumn
-            // 
-            this.targetkaloriDataGridViewTextBoxColumn.DataPropertyName = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn.HeaderText = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn.Name = "targetkaloriDataGridViewTextBoxColumn";
-            this.targetkaloriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // namaitemDataGridViewTextBoxColumn
-            // 
-            this.namaitemDataGridViewTextBoxColumn.DataPropertyName = "nama_item";
-            this.namaitemDataGridViewTextBoxColumn.HeaderText = "nama_item";
-            this.namaitemDataGridViewTextBoxColumn.Name = "namaitemDataGridViewTextBoxColumn";
-            this.namaitemDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kaloriDataGridViewTextBoxColumn
-            // 
-            this.kaloriDataGridViewTextBoxColumn.DataPropertyName = "kalori";
-            this.kaloriDataGridViewTextBoxColumn.HeaderText = "kalori";
-            this.kaloriDataGridViewTextBoxColumn.Name = "kaloriDataGridViewTextBoxColumn";
-            this.kaloriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipeDataGridViewTextBoxColumn
-            // 
-            this.tipeDataGridViewTextBoxColumn.DataPropertyName = "tipe";
-            this.tipeDataGridViewTextBoxColumn.HeaderText = "tipe";
-            this.tipeDataGridViewTextBoxColumn.Name = "tipeDataGridViewTextBoxColumn";
-            this.tipeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tanggalDataGridViewTextBoxColumn
-            // 
-            this.tanggalDataGridViewTextBoxColumn.DataPropertyName = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn.HeaderText = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn.Name = "tanggalDataGridViewTextBoxColumn";
-            this.tanggalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // vwAktivitasAktifBindingSource
             // 
@@ -707,53 +756,6 @@
             // vw_AktivitasAktifTableAdapter
             // 
             this.vw_AktivitasAktifTableAdapter.ClearBeforeFill = true;
-            // 
-            // idaktivitasDataGridViewTextBoxColumn
-            // 
-            this.idaktivitasDataGridViewTextBoxColumn.DataPropertyName = "id_aktivitas";
-            this.idaktivitasDataGridViewTextBoxColumn.HeaderText = "id_aktivitas";
-            this.idaktivitasDataGridViewTextBoxColumn.Name = "idaktivitasDataGridViewTextBoxColumn";
-            this.idaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idtargetDataGridViewTextBoxColumn1
-            // 
-            this.idtargetDataGridViewTextBoxColumn1.DataPropertyName = "id_target";
-            this.idtargetDataGridViewTextBoxColumn1.HeaderText = "id_target";
-            this.idtargetDataGridViewTextBoxColumn1.Name = "idtargetDataGridViewTextBoxColumn1";
-            this.idtargetDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // targetkaloriDataGridViewTextBoxColumn1
-            // 
-            this.targetkaloriDataGridViewTextBoxColumn1.DataPropertyName = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn1.HeaderText = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn1.Name = "targetkaloriDataGridViewTextBoxColumn1";
-            this.targetkaloriDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // namaaktivitasDataGridViewTextBoxColumn
-            // 
-            this.namaaktivitasDataGridViewTextBoxColumn.DataPropertyName = "nama_aktivitas";
-            this.namaaktivitasDataGridViewTextBoxColumn.HeaderText = "nama_aktivitas";
-            this.namaaktivitasDataGridViewTextBoxColumn.Name = "namaaktivitasDataGridViewTextBoxColumn";
-            this.namaaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kaloriterbakarDataGridViewTextBoxColumn
-            // 
-            this.kaloriterbakarDataGridViewTextBoxColumn.DataPropertyName = "kalori_terbakar";
-            this.kaloriterbakarDataGridViewTextBoxColumn.HeaderText = "kalori_terbakar";
-            this.kaloriterbakarDataGridViewTextBoxColumn.Name = "kaloriterbakarDataGridViewTextBoxColumn";
-            this.kaloriterbakarDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tanggalDataGridViewTextBoxColumn1
-            // 
-            this.tanggalDataGridViewTextBoxColumn1.DataPropertyName = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn1.HeaderText = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn1.Name = "tanggalDataGridViewTextBoxColumn1";
-            this.tanggalDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // vwRiwayatAktivitasBindingSource
-            // 
-            this.vwRiwayatAktivitasBindingSource.DataMember = "vw_RiwayatAktivitas";
-            this.vwRiwayatAktivitasBindingSource.DataSource = this.aMKH_DBDataSet;
             // 
             // vw_RiwayatAktivitasTableAdapter
             // 
@@ -794,18 +796,18 @@
             this.panelRingkasan.ResumeLayout(false);
             this.grpKonsumsi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatKonsumsi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).EndInit();
             this.grpAktivitas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRiwayatAktivitas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatAktivitasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator2)).EndInit();
             this.bindingNavigator2.ResumeLayout(false);
             this.bindingNavigator2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatAktivitasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwRiwayatKonsumsiBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
