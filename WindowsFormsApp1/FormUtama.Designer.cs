@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class AMKH
+    partial class FormUtama
     {
         private System.ComponentModel.IContainer components = null;
 

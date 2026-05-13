@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class AMKH : Form
+    public partial class FormUtama : Form
     {
         private string connectionString = "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
         private int selectedIdKonsumsi = -1;
         private int selectedIdTarget = -1;
 
-        public AMKH()
+        public FormUtama()
         {
             InitializeComponent();
         }
