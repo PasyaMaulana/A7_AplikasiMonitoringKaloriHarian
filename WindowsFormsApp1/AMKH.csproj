@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{540199B0-3958-4FEA-B459-8882BDD8B0DA}</ProjectGuid>
+    <ProjectGuid>{58750E4B-D0AD-41A4-9B1A-25D84417ED4B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAktivitas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAktivitas.Designer.cs">
-      <DependentUpon>FormAktivitas.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormUtama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,9 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAktivitas.resx">
-      <DependentUpon>FormAktivitas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormUtama.resx">
       <DependentUpon>FormUtama.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,7 +81,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\30579cc699708d1-removebg-preview.png" />
+    <Content Include="resources\30579cc699708d1-removebg-preview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
