@@ -32,5 +32,24 @@ namespace WindowsFormsApp1
             BukaForm(new FormKonsumsi());
             SetNavbarAktif(btnNavKonsumsi);
         }
+
+        // ── Cek Koneksi ──────────────────────────────────
+        private void CekKoneksi()
+        {
+            try
+            {
+                using (var c = new SqlConnection(connectionString))
+                {
+                    c.Open();
+                    lblStatusKoneksi.Text = "● TERHUBUNG";
+                    lblStatusKoneksi.ForeColor = Color.LimeGreen;
+                }
+            }
+            catch
+            {
+                lblStatusKoneksi.Text = "● GAGAL";
+                lblStatusKoneksi.ForeColor = Color.Red;
+            }
+        }
     }
 }
