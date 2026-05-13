@@ -33,5 +33,16 @@ namespace WindowsFormsApp1.Properties {
                 return ((string)(this["AMKHConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PASYA\\PASYA;Initial Catalog=AMKH_DB;User ID=sa;Password=040707;Encryp" +
+            "t=True;TrustServerCertificate=True")]
+        public string AMKH_DBConnectionString {
+            get {
+                return ((string)(this["AMKH_DBConnectionString"]));
+            }
+        }
     }
 }

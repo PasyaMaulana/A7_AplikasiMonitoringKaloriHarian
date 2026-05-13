@@ -20,9 +20,9 @@ namespace WindowsFormsApp1 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("AMKHDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("AMKH_DBDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class AMKHDataSet : global::System.Data.DataSet {
+    public partial class AMKH_DBDataSet : global::System.Data.DataSet {
         
         private AktivitasDataTable tableAktivitas;
         
@@ -50,7 +50,7 @@ namespace WindowsFormsApp1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public AMKHDataSet() {
+        public AMKH_DBDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected AMKHDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected AMKH_DBDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -251,7 +251,7 @@ namespace WindowsFormsApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            AMKHDataSet cln = ((AMKHDataSet)(base.Clone()));
+            AMKH_DBDataSet cln = ((AMKH_DBDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -397,9 +397,9 @@ namespace WindowsFormsApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "AMKHDataSet";
+            this.DataSetName = "AMKH_DBDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/AMKHDataSet.xsd";
+            this.Namespace = "http://tempuri.org/AMKH_DBDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableAktivitas = new AktivitasDataTable();
@@ -495,7 +495,7 @@ namespace WindowsFormsApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            AMKHDataSet ds = new AMKHDataSet();
+            AMKH_DBDataSet ds = new AMKH_DBDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -833,7 +833,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1175,7 +1175,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1504,7 +1504,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1796,7 +1796,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2130,7 +2130,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2480,7 +2480,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2804,7 +2804,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3138,7 +3138,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3488,7 +3488,7 @@ namespace WindowsFormsApp1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                AMKHDataSet ds = new AMKHDataSet();
+                AMKH_DBDataSet ds = new AMKH_DBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4675,7 +4675,7 @@ namespace WindowsFormsApp1 {
         }
     }
 }
-namespace WindowsFormsApp1.AMKHDataSetTableAdapters {
+namespace WindowsFormsApp1.AMKH_DBDataSetTableAdapters {
     
     
     /// <summary>
@@ -4844,7 +4844,7 @@ SELECT id_aktivitas, id_target, nama_aktivitas, kalori_terbakar, tanggal FROM Ak
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4862,7 +4862,7 @@ SELECT id_aktivitas, id_target, nama_aktivitas, kalori_terbakar, tanggal FROM Ak
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.AktivitasDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.AktivitasDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4875,9 +4875,9 @@ SELECT id_aktivitas, id_target, nama_aktivitas, kalori_terbakar, tanggal FROM Ak
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.AktivitasDataTable GetData() {
+        public virtual AMKH_DBDataSet.AktivitasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.AktivitasDataTable dataTable = new AMKHDataSet.AktivitasDataTable();
+            AMKH_DBDataSet.AktivitasDataTable dataTable = new AMKH_DBDataSet.AktivitasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4885,14 +4885,14 @@ SELECT id_aktivitas, id_target, nama_aktivitas, kalori_terbakar, tanggal FROM Ak
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet.AktivitasDataTable dataTable) {
+        public virtual int Update(AMKH_DBDataSet.AktivitasDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet dataSet) {
+        public virtual int Update(AMKH_DBDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Aktivitas");
         }
         
@@ -5193,7 +5193,7 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5211,7 +5211,7 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.KonsumsiDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.KonsumsiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5224,9 +5224,9 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.KonsumsiDataTable GetData() {
+        public virtual AMKH_DBDataSet.KonsumsiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.KonsumsiDataTable dataTable = new AMKHDataSet.KonsumsiDataTable();
+            AMKH_DBDataSet.KonsumsiDataTable dataTable = new AMKH_DBDataSet.KonsumsiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5234,14 +5234,14 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet.KonsumsiDataTable dataTable) {
+        public virtual int Update(AMKH_DBDataSet.KonsumsiDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet dataSet) {
+        public virtual int Update(AMKH_DBDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Konsumsi");
         }
         
@@ -5539,7 +5539,7 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5557,7 +5557,7 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.Konsumsi_BackupDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.Konsumsi_BackupDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5570,9 +5570,9 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.Konsumsi_BackupDataTable GetData() {
+        public virtual AMKH_DBDataSet.Konsumsi_BackupDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.Konsumsi_BackupDataTable dataTable = new AMKHDataSet.Konsumsi_BackupDataTable();
+            AMKH_DBDataSet.Konsumsi_BackupDataTable dataTable = new AMKH_DBDataSet.Konsumsi_BackupDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5580,14 +5580,14 @@ SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal FROM Konsumsi WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet.Konsumsi_BackupDataTable dataTable) {
+        public virtual int Update(AMKH_DBDataSet.Konsumsi_BackupDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet dataSet) {
+        public virtual int Update(AMKH_DBDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Konsumsi_Backup");
         }
         
@@ -5801,7 +5801,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5818,7 +5818,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.TargetDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.TargetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5831,9 +5831,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.TargetDataTable GetData() {
+        public virtual AMKH_DBDataSet.TargetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.TargetDataTable dataTable = new AMKHDataSet.TargetDataTable();
+            AMKH_DBDataSet.TargetDataTable dataTable = new AMKH_DBDataSet.TargetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5841,14 +5841,14 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet.TargetDataTable dataTable) {
+        public virtual int Update(AMKH_DBDataSet.TargetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(AMKHDataSet dataSet) {
+        public virtual int Update(AMKH_DBDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Target");
         }
         
@@ -6084,7 +6084,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6102,7 +6102,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.vw_AktivitasAktifDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.vw_AktivitasAktifDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6115,9 +6115,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.vw_AktivitasAktifDataTable GetData() {
+        public virtual AMKH_DBDataSet.vw_AktivitasAktifDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.vw_AktivitasAktifDataTable dataTable = new AMKHDataSet.vw_AktivitasAktifDataTable();
+            AMKH_DBDataSet.vw_AktivitasAktifDataTable dataTable = new AMKH_DBDataSet.vw_AktivitasAktifDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6258,7 +6258,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6276,7 +6276,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.vw_KonsumsiAktifDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.vw_KonsumsiAktifDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6289,9 +6289,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.vw_KonsumsiAktifDataTable GetData() {
+        public virtual AMKH_DBDataSet.vw_KonsumsiAktifDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.vw_KonsumsiAktifDataTable dataTable = new AMKHDataSet.vw_KonsumsiAktifDataTable();
+            AMKH_DBDataSet.vw_KonsumsiAktifDataTable dataTable = new AMKH_DBDataSet.vw_KonsumsiAktifDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6431,7 +6431,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6449,7 +6449,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.vw_RingkasanRiwayatDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.vw_RingkasanRiwayatDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6462,9 +6462,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.vw_RingkasanRiwayatDataTable GetData() {
+        public virtual AMKH_DBDataSet.vw_RingkasanRiwayatDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.vw_RingkasanRiwayatDataTable dataTable = new AMKHDataSet.vw_RingkasanRiwayatDataTable();
+            AMKH_DBDataSet.vw_RingkasanRiwayatDataTable dataTable = new AMKH_DBDataSet.vw_RingkasanRiwayatDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6604,7 +6604,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6622,7 +6622,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.vw_RiwayatAktivitasDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.vw_RiwayatAktivitasDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6635,9 +6635,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.vw_RiwayatAktivitasDataTable GetData() {
+        public virtual AMKH_DBDataSet.vw_RiwayatAktivitasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.vw_RiwayatAktivitasDataTable dataTable = new AMKHDataSet.vw_RiwayatAktivitasDataTable();
+            AMKH_DBDataSet.vw_RiwayatAktivitasDataTable dataTable = new AMKH_DBDataSet.vw_RiwayatAktivitasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6778,7 +6778,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.AMKH_DBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6796,7 +6796,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AMKHDataSet.vw_RiwayatKonsumsiDataTable dataTable) {
+        public virtual int Fill(AMKH_DBDataSet.vw_RiwayatKonsumsiDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6809,9 +6809,9 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AMKHDataSet.vw_RiwayatKonsumsiDataTable GetData() {
+        public virtual AMKH_DBDataSet.vw_RiwayatKonsumsiDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            AMKHDataSet.vw_RiwayatKonsumsiDataTable dataTable = new AMKHDataSet.vw_RiwayatKonsumsiDataTable();
+            AMKH_DBDataSet.vw_RiwayatKonsumsiDataTable dataTable = new AMKH_DBDataSet.vw_RiwayatKonsumsiDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6977,7 +6977,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(AMKHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(AMKH_DBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._targetTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Target.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -7023,7 +7023,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(AMKHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(AMKH_DBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._targetTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Target.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -7065,7 +7065,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(AMKHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(AMKH_DBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._konsumsi_BackupTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Konsumsi_Backup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -7131,7 +7131,7 @@ SELECT id_target, target_kalori, tanggal FROM Target WHERE (id_target = @id_targ
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(AMKHDataSet dataSet) {
+        public virtual int UpdateAll(AMKH_DBDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

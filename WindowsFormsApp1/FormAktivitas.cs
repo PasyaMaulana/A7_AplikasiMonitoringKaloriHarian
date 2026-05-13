@@ -14,7 +14,7 @@ namespace AMKH_TESTING
     public partial class FormAktivitas : Form
     {
         private string connectionString =
-            "Server=PASYA\\PASYA;Database=AMKH;Integrated Security=True;";
+            "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
 
         private BindingSource bindingSource = new BindingSource();
         private int selectedId = -1;
@@ -26,6 +26,8 @@ namespace AMKH_TESTING
 
         private void FormAktivitas_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'aMKH_DBDataSet.vw_AktivitasAktif' table. You can move, or remove it, as needed.
+            this.vw_AktivitasAktifTableAdapter.Fill(this.aMKH_DBDataSet.vw_AktivitasAktif);
             dgvAktivitas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAktivitas.MultiSelect = false;
             dgvAktivitas.ReadOnly = true;
@@ -366,15 +368,6 @@ namespace AMKH_TESTING
             if (string.IsNullOrWhiteSpace(nama) || nama.Length < 3)
             {
                 MessageBox.Show("Nama aktivitas minimal 3 karakter!", "Validasi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtNamaAktivitas.Focus();
-                return false;
-            }
-
-            // 2. tidak boleh ada angka
-            if (nama.Any(char.IsDigit))
-            {
-                MessageBox.Show("Nama aktivitas tidak boleh mengandung angka!", "Validasi",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNamaAktivitas.Focus();
                 return false;

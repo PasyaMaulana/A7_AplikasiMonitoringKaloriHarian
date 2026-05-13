@@ -46,16 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AMKHDataSet.Designer.cs">
+    <Compile Include="AMKH_DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+      <DependentUpon>AMKH_DBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FormAktivitas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAktivitas.Designer.cs">
       <DependentUpon>FormAktivitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKonsumsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKonsumsi.Designer.cs">
+      <DependentUpon>FormKonsumsi.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRiwayat.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     <EmbeddedResource Include="FormAktivitas.resx">
       <DependentUpon>FormAktivitas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormKonsumsi.resx">
+      <DependentUpon>FormKonsumsi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRiwayat.resx">
       <DependentUpon>FormRiwayat.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,16 +99,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AMKHDataSet.xsc">
-      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+    <None Include="AMKH_DBDataSet.xsc">
+      <DependentUpon>AMKH_DBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="AMKHDataSet.xsd">
+    <None Include="AMKH_DBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AMKHDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>AMKH_DBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="AMKHDataSet.xss">
-      <DependentUpon>AMKHDataSet.xsd</DependentUpon>
+    <None Include="AMKH_DBDataSet.xss">
+      <DependentUpon>AMKH_DBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

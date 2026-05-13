@@ -34,7 +34,6 @@
             this.grpInput = new System.Windows.Forms.GroupBox();
             this.lblNamaAktivitas = new System.Windows.Forms.Label();
             this.txtNamaAktivitas = new System.Windows.Forms.TextBox();
-            this.vwAktivitasAktifBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblKaloriTerbakar = new System.Windows.Forms.Label();
             this.txtKaloriTerbakar = new System.Windows.Forms.TextBox();
             this.lblTanggal = new System.Windows.Forms.Label();
@@ -48,36 +47,38 @@
             this.txtCari = new System.Windows.Forms.TextBox();
             this.btnCari = new System.Windows.Forms.Button();
             this.btnTampilkan = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dgvAktivitas = new System.Windows.Forms.DataGridView();
-            this.idaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtargetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targetkaloriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namaaktivitasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kaloriterbakarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.aMKH_DBDataSet = new WindowsFormsApp1.AMKH_DBDataSet();
+            this.vwAktivitasAktifBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vw_AktivitasAktifTableAdapter = new WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_AktivitasAktifTableAdapter();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSubHeader.SuspendLayout();
             this.panelInfoAktivitas.SuspendLayout();
             this.grpTarget.SuspendLayout();
             this.grpInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).BeginInit();
             this.panelCari.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSubHeader
@@ -283,6 +284,7 @@
             this.txtNamaAktivitas.Name = "txtNamaAktivitas";
             this.txtNamaAktivitas.Size = new System.Drawing.Size(260, 23);
             this.txtNamaAktivitas.TabIndex = 1;
+            // 
             // lblKaloriTerbakar
             // 
             this.lblKaloriTerbakar.AutoSize = true;
@@ -473,12 +475,12 @@
             this.dgvAktivitas.ColumnHeadersHeight = 30;
             this.dgvAktivitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAktivitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idaktivitasDataGridViewTextBoxColumn,
-            this.idtargetDataGridViewTextBoxColumn,
-            this.targetkaloriDataGridViewTextBoxColumn,
-            this.namaaktivitasDataGridViewTextBoxColumn,
-            this.kaloriterbakarDataGridViewTextBoxColumn,
-            this.tanggalDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
             this.dgvAktivitas.DataSource = this.vwAktivitasAktifBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(36)))), ((int)(((byte)(28)))));
@@ -500,103 +502,6 @@
             this.dgvAktivitas.Size = new System.Drawing.Size(1027, 310);
             this.dgvAktivitas.TabIndex = 7;
             this.dgvAktivitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAktivitas_CellClick);
-            // 
-            // idaktivitasDataGridViewTextBoxColumn
-            // 
-            this.idaktivitasDataGridViewTextBoxColumn.DataPropertyName = "id_aktivitas";
-            this.idaktivitasDataGridViewTextBoxColumn.HeaderText = "id_aktivitas";
-            this.idaktivitasDataGridViewTextBoxColumn.Name = "idaktivitasDataGridViewTextBoxColumn";
-            this.idaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idtargetDataGridViewTextBoxColumn
-            // 
-            this.idtargetDataGridViewTextBoxColumn.DataPropertyName = "id_target";
-            this.idtargetDataGridViewTextBoxColumn.HeaderText = "id_target";
-            this.idtargetDataGridViewTextBoxColumn.Name = "idtargetDataGridViewTextBoxColumn";
-            this.idtargetDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // targetkaloriDataGridViewTextBoxColumn
-            // 
-            this.targetkaloriDataGridViewTextBoxColumn.DataPropertyName = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn.HeaderText = "target_kalori";
-            this.targetkaloriDataGridViewTextBoxColumn.Name = "targetkaloriDataGridViewTextBoxColumn";
-            this.targetkaloriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // namaaktivitasDataGridViewTextBoxColumn
-            // 
-            this.namaaktivitasDataGridViewTextBoxColumn.DataPropertyName = "nama_aktivitas";
-            this.namaaktivitasDataGridViewTextBoxColumn.HeaderText = "nama_aktivitas";
-            this.namaaktivitasDataGridViewTextBoxColumn.Name = "namaaktivitasDataGridViewTextBoxColumn";
-            this.namaaktivitasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kaloriterbakarDataGridViewTextBoxColumn
-            // 
-            this.kaloriterbakarDataGridViewTextBoxColumn.DataPropertyName = "kalori_terbakar";
-            this.kaloriterbakarDataGridViewTextBoxColumn.HeaderText = "kalori_terbakar";
-            this.kaloriterbakarDataGridViewTextBoxColumn.Name = "kaloriterbakarDataGridViewTextBoxColumn";
-            this.kaloriterbakarDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tanggalDataGridViewTextBoxColumn
-            // 
-            this.tanggalDataGridViewTextBoxColumn.DataPropertyName = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn.HeaderText = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn.Name = "tanggalDataGridViewTextBoxColumn";
-            this.tanggalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingNavigator1
-            // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.BindingSource = this.vwAktivitasAktifBindingSource;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 675);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1050, 25);
-            this.bindingNavigator1.TabIndex = 8;
-            this.bindingNavigator1.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -631,6 +536,13 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
@@ -658,6 +570,111 @@
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BindingSource = this.vwAktivitasAktifBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 675);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(1050, 25);
+            this.bindingNavigator1.TabIndex = 8;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // aMKH_DBDataSet
+            // 
+            this.aMKH_DBDataSet.DataSetName = "AMKH_DBDataSet";
+            this.aMKH_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vwAktivitasAktifBindingSource
+            // 
+            this.vwAktivitasAktifBindingSource.DataMember = "vw_AktivitasAktif";
+            this.vwAktivitasAktifBindingSource.DataSource = this.aMKH_DBDataSet;
+            // 
+            // vw_AktivitasAktifTableAdapter
+            // 
+            this.vw_AktivitasAktifTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id_aktivitas";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id_aktivitas";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "id_target";
+            this.dataGridViewTextBoxColumn2.HeaderText = "id_target";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "target_kalori";
+            this.dataGridViewTextBoxColumn3.HeaderText = "target_kalori";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "nama_aktivitas";
+            this.dataGridViewTextBoxColumn4.HeaderText = "nama_aktivitas";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "kalori_terbakar";
+            this.dataGridViewTextBoxColumn5.HeaderText = "kalori_terbakar";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "tanggal";
+            this.dataGridViewTextBoxColumn6.HeaderText = "tanggal";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
             // FormAktivitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -684,14 +701,14 @@
             this.grpTarget.PerformLayout();
             this.grpInput.ResumeLayout(false);
             this.grpInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).EndInit();
             this.panelCari.ResumeLayout(false);
             this.panelCari.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivitas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwAktivitasAktifBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -727,26 +744,33 @@
         private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.Button btnTampilkan;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridView dgvAktivitas;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.BindingSource vwAktivitasAktifBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idaktivitasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idtargetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn targetkaloriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaaktivitasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kaloriterbakarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tanggalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private WindowsFormsApp1.AMKH_DBDataSet aMKH_DBDataSet;
+        private System.Windows.Forms.BindingSource vwAktivitasAktifBindingSource;
+        private WindowsFormsApp1.AMKH_DBDataSetTableAdapters.vw_AktivitasAktifTableAdapter vw_AktivitasAktifTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

@@ -14,7 +14,7 @@ namespace AMKH_TESTING
     public partial class FormRiwayat : Form
     {
         private string connectionString =
-            "Server=PASYA\\PASYA;Database=AMKH;Integrated Security=True;";
+            "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
 
         public FormRiwayat()
         {
@@ -23,10 +23,14 @@ namespace AMKH_TESTING
 
         private void FormRiwayat_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'aMKHDataSet.vw_RiwayatAktivitas' table. You can move, or remove it, as needed.
-            this.vw_RiwayatAktivitasTableAdapter.Fill(this.aMKHDataSet.vw_RiwayatAktivitas);
-            // TODO: This line of code loads data into the 'aMKHDataSet.vw_RiwayatKonsumsi' table. You can move, or remove it, as needed.
-            this.vw_RiwayatKonsumsiTableAdapter.Fill(this.aMKHDataSet.vw_RiwayatKonsumsi);
+            // TODO: This line of code loads data into the 'aMKH_DBDataSet.vw_RiwayatKonsumsi' table. You can move, or remove it, as needed.
+            this.vw_RiwayatKonsumsiTableAdapter.Fill(this.aMKH_DBDataSet.vw_RiwayatKonsumsi);
+            // TODO: This line of code loads data into the 'aMKH_DBDataSet.vw_RiwayatAktivitas' table. You can move, or remove it, as needed.
+            this.vw_RiwayatAktivitasTableAdapter.Fill(this.aMKH_DBDataSet.vw_RiwayatAktivitas);
+            // TODO: This line of code loads data into the 'aMKH_DBDataSet.vw_AktivitasAktif' table. You can move, or remove it, as needed.
+            this.vw_AktivitasAktifTableAdapter.Fill(this.aMKH_DBDataSet.vw_AktivitasAktif);
+            // TODO: This line of code loads data into the 'aMKH_DBDataSet.vw_KonsumsiAktif' table. You can move, or remove it, as needed.
+            this.vw_KonsumsiAktifTableAdapter.Fill(this.aMKH_DBDataSet.vw_KonsumsiAktif);
             // Default tanggal = kemarin
             dtpRiwayat.Value = DateTime.Today.AddDays(-1);
             dtpRiwayat.MaxDate = DateTime.Today.AddDays(-1); // Blokir pilih hari ini ke depan
@@ -220,6 +224,11 @@ namespace AMKH_TESTING
         private void dtpRiwayat_ValueChanged(object sender, EventArgs e)
         {
             TampilkanRiwayat();
+        }
+
+        private void panelSubHeader_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
