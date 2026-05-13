@@ -297,5 +297,26 @@ namespace WindowsFormsApp1
             txtCari.Clear();
             MuatData();
         }
+
+        // ── Klik baris grid ──────────────────────────────
+        private void dgvAktivitas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            var row = dgvAktivitas.Rows[e.RowIndex];
+
+            selectedId = Convert.ToInt32(row.Cells["id_aktivitas"].Value);
+            txtNamaAktivitas.Text = row.Cells["nama_aktivitas"].Value.ToString();
+            txtKaloriTerbakar.Text = row.Cells["kalori_terbakar"].Value.ToString();
+            dtpTanggal.Value = Convert.ToDateTime(row.Cells["tanggal"].Value);
+
+            btnUpdate.Enabled = true;
+            btnHapus.Enabled = true;
+            TampilkanInfoAktivitas();
+        }
+
+        private void dtpTanggal_ValueChanged(object sender, EventArgs e)
+        {
+            TampilkanInfoAktivitas();
+        }
     }
 }
