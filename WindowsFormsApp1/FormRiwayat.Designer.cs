@@ -308,7 +308,7 @@
             this.kaloriDataGridViewTextBoxColumn,
             this.tipeDataGridViewTextBoxColumn,
             this.tanggalDataGridViewTextBoxColumn});
-            this.dgvRiwayatKonsumsi.DataSource = this.vwRiwayatKonsumsiBindingSource;
+            this.dgvRiwayatKonsumsi.DataSource = this.vwKonsumsiAktifBindingSource;
             this.dgvRiwayatKonsumsi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRiwayatKonsumsi.Location = new System.Drawing.Point(3, 19);
             this.dgvRiwayatKonsumsi.Name = "dgvRiwayatKonsumsi";
@@ -409,7 +409,6 @@
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem2;
-            this.bindingNavigator1.BindingSource = this.vwRiwayatAktivitasBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem2;
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -525,7 +524,6 @@
             // bindingNavigator2
             // 
             this.bindingNavigator2.AddNewItem = this.bindingNavigatorAddNewItem3;
-            this.bindingNavigator2.BindingSource = this.vwRiwayatKonsumsiBindingSource;
             this.bindingNavigator2.CountItem = this.bindingNavigatorCountItem1;
             this.bindingNavigator2.DeleteItem = this.bindingNavigatorDeleteItem3;
             this.bindingNavigator2.Dock = System.Windows.Forms.DockStyle.Bottom;
