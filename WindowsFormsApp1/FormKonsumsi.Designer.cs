@@ -1,4 +1,4 @@
-﻿namespace AMKH_TESTING
+﻿namespace AMKH
 {
     partial class FormKonsumsi
     {
@@ -52,6 +52,9 @@
             this.txtCari = new System.Windows.Forms.TextBox();
             this.btnCari = new System.Windows.Forms.Button();
             this.btnTampilkan = new System.Windows.Forms.Button();
+            this.grpImport = new System.Windows.Forms.GroupBox();
+            this.btnImportExcel = new System.Windows.Forms.Button();
+            this.btnImportDB = new System.Windows.Forms.Button();
             this.grpSqlInjection = new System.Windows.Forms.GroupBox();
             this.lblInjectionInfo = new System.Windows.Forms.Label();
             this.btnBackupData = new System.Windows.Forms.Button();
@@ -87,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).BeginInit();
             this.panelCari.SuspendLayout();
+            this.grpImport.SuspendLayout();
             this.grpSqlInjection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKonsumsi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwKonsumsiAktifBindingSource)).BeginInit();
@@ -515,6 +519,51 @@
             this.btnTampilkan.UseVisualStyleBackColor = false;
             this.btnTampilkan.Click += new System.EventHandler(this.btnTampilkan_Click);
             // 
+            // grpImport
+            // 
+            this.grpImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(40)))), ((int)(((byte)(25)))));
+            this.grpImport.Controls.Add(this.btnImportExcel);
+            this.grpImport.Controls.Add(this.btnImportDB);
+            this.grpImport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpImport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(220)))), ((int)(((byte)(120)))));
+            this.grpImport.Location = new System.Drawing.Point(9, 339);
+            this.grpImport.Name = "grpImport";
+            this.grpImport.Size = new System.Drawing.Size(1027, 58);
+            this.grpImport.TabIndex = 6;
+            this.grpImport.TabStop = false;
+            this.grpImport.Text = "Import Data dari Excel";
+            // 
+            // btnImportExcel
+            // 
+            this.btnImportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.btnImportExcel.FlatAppearance.BorderSize = 0;
+            this.btnImportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportExcel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImportExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(220)))), ((int)(((byte)(120)))));
+            this.btnImportExcel.Location = new System.Drawing.Point(14, 18);
+            this.btnImportExcel.Name = "btnImportExcel";
+            this.btnImportExcel.Size = new System.Drawing.Size(150, 28);
+            this.btnImportExcel.TabIndex = 0;
+            this.btnImportExcel.Text = "1. Pilih File Excel";
+            this.btnImportExcel.UseVisualStyleBackColor = false;
+            this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
+            // 
+            // btnImportDB
+            // 
+            this.btnImportDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(80)))), ((int)(((byte)(20)))));
+            this.btnImportDB.Enabled = false;
+            this.btnImportDB.FlatAppearance.BorderSize = 0;
+            this.btnImportDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportDB.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImportDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(255)))), ((int)(((byte)(180)))));
+            this.btnImportDB.Location = new System.Drawing.Point(174, 18);
+            this.btnImportDB.Name = "btnImportDB";
+            this.btnImportDB.Size = new System.Drawing.Size(160, 28);
+            this.btnImportDB.TabIndex = 1;
+            this.btnImportDB.Text = "2. Import ke Database";
+            this.btnImportDB.UseVisualStyleBackColor = false;
+            this.btnImportDB.Click += new System.EventHandler(this.btnImportDB_Click);
+            // 
             // grpSqlInjection
             // 
             this.grpSqlInjection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -525,10 +574,10 @@
             this.grpSqlInjection.Controls.Add(this.btnResetData);
             this.grpSqlInjection.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpSqlInjection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.grpSqlInjection.Location = new System.Drawing.Point(9, 339);
+            this.grpSqlInjection.Location = new System.Drawing.Point(9, 404);
             this.grpSqlInjection.Name = "grpSqlInjection";
             this.grpSqlInjection.Size = new System.Drawing.Size(1027, 58);
-            this.grpSqlInjection.TabIndex = 6;
+            this.grpSqlInjection.TabIndex = 7;
             this.grpSqlInjection.TabStop = false;
             this.grpSqlInjection.Text = "⚠ Demo SQL Injection";
             // 
@@ -641,7 +690,7 @@
             this.dgvKonsumsi.EnableHeadersVisualStyles = false;
             this.dgvKonsumsi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dgvKonsumsi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(65)))), ((int)(((byte)(40)))));
-            this.dgvKonsumsi.Location = new System.Drawing.Point(9, 434);
+            this.dgvKonsumsi.Location = new System.Drawing.Point(9, 499);
             this.dgvKonsumsi.Name = "dgvKonsumsi";
             this.dgvKonsumsi.ReadOnly = true;
             this.dgvKonsumsi.RowHeadersVisible = false;
@@ -728,7 +777,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 675);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 775);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -830,10 +879,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(1050, 700);
+            this.ClientSize = new System.Drawing.Size(1050, 800);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.dgvKonsumsi);
             this.Controls.Add(this.grpSqlInjection);
+            this.Controls.Add(this.grpImport);
             this.Controls.Add(this.panelCari);
             this.Controls.Add(this.grpInput);
             this.Controls.Add(this.grpTarget);
@@ -856,6 +906,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.aMKH_DBDataSet)).EndInit();
             this.panelCari.ResumeLayout(false);
             this.panelCari.PerformLayout();
+            this.grpImport.ResumeLayout(false);
             this.grpSqlInjection.ResumeLayout(false);
             this.grpSqlInjection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKonsumsi)).EndInit();
@@ -901,6 +952,9 @@
         private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.Button btnTampilkan;
+        private System.Windows.Forms.GroupBox grpImport;
+        private System.Windows.Forms.Button btnImportExcel;
+        private System.Windows.Forms.Button btnImportDB;
         private System.Windows.Forms.GroupBox grpSqlInjection;
         private System.Windows.Forms.Label lblInjectionInfo;
         private System.Windows.Forms.Button btnBackupData;

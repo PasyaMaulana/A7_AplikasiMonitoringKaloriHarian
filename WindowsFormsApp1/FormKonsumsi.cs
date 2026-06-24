@@ -1,16 +1,17 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace AMKH_TESTING
+namespace AMKH
 {
     public partial class FormKonsumsi : Form
     {
-        private string connectionString =
-            "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
+        private DAL dbLogic = new DAL();
         private int selectedId = -1;
+        private DataTable dtImport = null;
 
         public FormKonsumsi()
         {
@@ -39,7 +40,6 @@ namespace AMKH_TESTING
             HitungTotal();
         }
 
-        // ── Load via VIEW ─────────────────────────────────
         private void MuatData()
         {
             try
@@ -73,70 +73,43 @@ namespace AMKH_TESTING
                 dgvKonsumsi.Columns["tanggalDataGridViewTextBoxColumn"].HeaderText = "Tanggal";
         }
 
-        // ── COUNT via OUTPUT PARAMETER ────────────────────
         private void HitungTotal()
         {
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_CountKonsumsi", c)
-                    {
-                        CommandType = CommandType.StoredProcedure
-                    };
-                    var p = cmd.Parameters.Add("@total", SqlDbType.Int);
-                    p.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
-                    lblTotalRecord.Text = "Total: " + p.Value + " record aktif";
-                }
+                lblTotalRecord.Text = "Total: " + dbLogic.CountKonsumsi() + " record aktif";
             }
             catch { }
         }
 
-        // ── Info kalori hari ini ──────────────────────────
         private void TampilkanInfoKalori()
         {
             try
             {
-                using (var c = new SqlConnection(connectionString))
+                DateTime tgl = dtpTanggal.Value.Date;
+                decimal totalKal = dbLogic.GetTotalKaloriHariIni(tgl);
+                decimal target = dbLogic.GetTargetKalori(tgl);
+
+                if (target > 0)
                 {
-                    c.Open();
-                    DateTime tgl = dtpTanggal.Value.Date;
-
-                    var cmdK = new SqlCommand(
-                        "SELECT ISNULL(SUM(kalori),0) FROM Konsumsi WHERE tanggal=@tgl", c);
-                    cmdK.Parameters.AddWithValue("@tgl", tgl);
-                    decimal totalKal = (decimal)cmdK.ExecuteScalar();
-
-                    var cmdT = new SqlCommand(
-                        "SELECT ISNULL(target_kalori,0) FROM Target WHERE tanggal=@tgl", c);
-                    cmdT.Parameters.AddWithValue("@tgl", tgl);
-                    object tRes = cmdT.ExecuteScalar();
-                    decimal target = (tRes != null && tRes != DBNull.Value) ? (decimal)tRes : 0;
-
-                    if (target > 0)
-                    {
-                        decimal sisa = target - totalKal;
-                        string status = sisa >= 0
-                            ? "Sisa: " + sisa.ToString("N0") + " kkal"
-                            : "MELEBIHI " + Math.Abs(sisa).ToString("N0") + " kkal!";
-                        lblInfoKalori.Text = tgl.ToString("dd/MM/yyyy") + " — " +
-                            totalKal.ToString("N0") + " / " + target.ToString("N0") + " kkal | " + status;
-                        lblInfoKalori.ForeColor = sisa >= 0 ? Color.LimeGreen : Color.Red;
-                    }
-                    else
-                    {
-                        lblInfoKalori.Text = tgl.ToString("dd/MM/yyyy") + " — " +
-                            totalKal.ToString("N0") + " kkal | (belum ada target)";
-                        lblInfoKalori.ForeColor = Color.FromArgb(255, 200, 60);
-                    }
+                    decimal sisa = target - totalKal;
+                    string status = sisa >= 0
+                        ? "Sisa: " + sisa.ToString("N0") + " kkal"
+                        : "MELEBIHI " + Math.Abs(sisa).ToString("N0") + " kkal!";
+                    lblInfoKalori.Text = tgl.ToString("dd/MM/yyyy") + " — " +
+                        totalKal.ToString("N0") + " / " + target.ToString("N0") + " kkal | " + status;
+                    lblInfoKalori.ForeColor = sisa >= 0 ? Color.LimeGreen : Color.Red;
+                }
+                else
+                {
+                    lblInfoKalori.Text = tgl.ToString("dd/MM/yyyy") + " — " +
+                        totalKal.ToString("N0") + " kkal | (belum ada target)";
+                    lblInfoKalori.ForeColor = Color.FromArgb(255, 200, 60);
                 }
             }
             catch { }
         }
 
-        // ── Set Target via SP ─────────────────────────────
         private void btnSetTarget_Click(object sender, EventArgs e)
         {
             if (!decimal.TryParse(txtTargetKalori.Text, out decimal target) || target <= 0)
@@ -147,23 +120,11 @@ namespace AMKH_TESTING
             }
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_SetTarget", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggalTarget.Value.Date);
-                    cmd.Parameters.AddWithValue("@target_kalori", target);
-                    var pUpd = cmd.Parameters.Add("@is_update", SqlDbType.Bit);
-                    pUpd.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
-
-                    bool isUpdate = (bool)pUpd.Value;
-                    MessageBox.Show("Target berhasil " + (isUpdate ? "diperbarui" : "disimpan") + "!",
-                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTargetKalori.Clear();
-                    TampilkanInfoKalori();
-                }
+                dbLogic.SetTarget(dtpTanggalTarget.Value.Date, target, out bool isUpdate);
+                MessageBox.Show("Target berhasil " + (isUpdate ? "diperbarui" : "disimpan") + "!",
+                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTargetKalori.Clear();
+                TampilkanInfoKalori();
             }
             catch (Exception ex)
             {
@@ -171,29 +132,22 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── INSERT via SP ─────────────────────────────────
         private void btnTambah_Click(object sender, EventArgs e)
         {
             if (!ValidasiInput()) return;
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_TambahKonsumsi", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@nama_item", txtNamaItem.Text.Trim());
-                    cmd.Parameters.AddWithValue("@kalori", decimal.Parse(txtKalori.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tipe", cmbTipe.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggal.Value.Date);
-                    cmd.ExecuteNonQuery();
+                dbLogic.TambahKonsumsi(
+                    txtNamaItem.Text.Trim(),
+                    decimal.Parse(txtKalori.Text.Trim()),
+                    cmbTipe.SelectedItem.ToString(),
+                    dtpTanggal.Value.Date);
 
-                    MessageBox.Show("Data berhasil ditambahkan!", "Sukses",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoKalori();
-                }
+                MessageBox.Show("Data berhasil ditambahkan!", "Sukses",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoKalori();
             }
             catch (Exception ex)
             {
@@ -201,7 +155,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── UPDATE via SP ─────────────────────────────────
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedId == -1) return;
@@ -211,30 +164,21 @@ namespace AMKH_TESTING
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_UpdateKonsumsi", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@id_konsumsi", selectedId);
-                    cmd.Parameters.AddWithValue("@nama_item", txtNamaItem.Text.Trim());
-                    cmd.Parameters.AddWithValue("@kalori", decimal.Parse(txtKalori.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tipe", cmbTipe.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggal.Value.Date);
-                    var pPesan = cmd.Parameters.Add("@pesan", SqlDbType.VarChar, 200);
-                    pPesan.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
+                string pesan = dbLogic.UpdateKonsumsi(
+                    selectedId,
+                    txtNamaItem.Text.Trim(),
+                    decimal.Parse(txtKalori.Text.Trim()),
+                    cmbTipe.SelectedItem.ToString(),
+                    dtpTanggal.Value.Date);
 
-                    string pesan = pPesan.Value.ToString();
-                    if (pesan != "OK")
-                        MessageBox.Show(pesan, "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                        MessageBox.Show("Data berhasil diubah!", "Sukses",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoKalori();
-                }
+                if (pesan != "OK")
+                    MessageBox.Show(pesan, "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    MessageBox.Show("Data berhasil diubah!", "Sukses",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoKalori();
             }
             catch (Exception ex)
             {
@@ -242,7 +186,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── DELETE via SP ─────────────────────────────────
         private void btnHapus_Click(object sender, EventArgs e)
         {
             if (selectedId == -1) return;
@@ -251,24 +194,13 @@ namespace AMKH_TESTING
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_HapusKonsumsi", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@id_konsumsi", selectedId);
-                    var pHapus = cmd.Parameters.Add("@target_juga_dihapus", SqlDbType.Bit);
-                    pHapus.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
-
-                    bool tHapus = (bool)pHapus.Value;
-                    MessageBox.Show("Data dihapus!" +
-                        (tHapus ? "\n(Target hari itu ikut dihapus.)" : ""),
-                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoKalori();
-                }
+                bool tHapus = dbLogic.HapusKonsumsi(selectedId);
+                MessageBox.Show("Data dihapus!" +
+                    (tHapus ? "\n(Target hari itu ikut dihapus.)" : ""),
+                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoKalori();
             }
             catch (Exception ex)
             {
@@ -276,7 +208,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── SEARCH via BindingSource Filter ──────────────
         private void btnCari_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtCari.Text)) { MuatData(); return; }
@@ -298,7 +229,6 @@ namespace AMKH_TESTING
             MuatData();
         }
 
-        // ── Klik baris grid ───────────────────────────────
         private void dgvKonsumsi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -357,16 +287,13 @@ namespace AMKH_TESTING
             return true;
         }
 
-        // ============================================================
-        // SIMULASI SQL INJECTION — hanya untuk keperluan demo/edukasi
-        // ============================================================
+        // ── SIMULASI SQL INJECTION ────────────────────────
 
-        // TOMBOL 1: Backup data sebelum demo
         private void btnBackupData_Click(object sender, EventArgs e)
         {
             try
             {
-                using (var c = new SqlConnection(connectionString))
+                using (var c = new SqlConnection(dbLogic.GetConnectionString()))
                 {
                     c.Open();
                     var cmdCek = new SqlCommand(
@@ -390,25 +317,22 @@ namespace AMKH_TESTING
             }
         }
 
-        // TOMBOL 2: Simulasi serangan SQL Injection (query TIDAK AMAN)
         private void btnTestInjection_Click(object sender, EventArgs e)
         {
             string inputDariUser = txtNamaItem.Text;
-
             string queryBerbahaya =
                 "UPDATE Konsumsi SET nama_item = 'HACKED' " +
                 "WHERE nama_item = '" + inputDariUser + "'";
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
+                using (var c = new SqlConnection(dbLogic.GetConnectionString()))
                 {
                     c.Open();
                     var cmd = new SqlCommand(queryBerbahaya, c);
                     int baris = cmd.ExecuteNonQuery();
                     MessageBox.Show(
-                        "Query dijalankan!\n" +
-                        "Baris terupdate: " + baris + "\n\n" +
+                        "Query dijalankan!\nBaris terupdate: " + baris + "\n\n" +
                         "Query yang dieksekusi:\n" + queryBerbahaya,
                         "Hasil SQL Injection Demo",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -421,7 +345,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // TOMBOL 3: Reset data dari backup setelah demo
         private void btnResetData_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(
@@ -430,20 +353,17 @@ namespace AMKH_TESTING
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             try
             {
-                using (var c = new SqlConnection(connectionString))
+                using (var c = new SqlConnection(dbLogic.GetConnectionString()))
                 {
                     c.Open();
                     string query = @"
                         IF OBJECT_ID('dbo.Konsumsi_Backup') IS NOT NULL
                         BEGIN
                             DELETE FROM dbo.Konsumsi;
-
                             SET IDENTITY_INSERT dbo.Konsumsi ON;
-
                             INSERT INTO dbo.Konsumsi (id_konsumsi, id_target, nama_item, kalori, tipe, tanggal)
                             SELECT id_konsumsi, id_target, nama_item, kalori, tipe, tanggal
                             FROM dbo.Konsumsi_Backup;
-
                             SET IDENTITY_INSERT dbo.Konsumsi OFF;
                         END";
                     new SqlCommand(query, c).ExecuteNonQuery();
@@ -459,25 +379,21 @@ namespace AMKH_TESTING
             }
         }
 
-        // TOMBOL 4: Demonstrasi query AMAN (parameterized)
         private void btnQueryAman_Click(object sender, EventArgs e)
         {
             string inputDariUser = txtNamaItem.Text;
-
-            string queryAman =
-                "UPDATE Konsumsi SET nama_item = 'AMAN' WHERE nama_item = @nama";
+            string queryAman = "UPDATE Konsumsi SET nama_item = 'AMAN' WHERE nama_item = @nama";
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
+                using (var c = new SqlConnection(dbLogic.GetConnectionString()))
                 {
                     c.Open();
                     var cmd = new SqlCommand(queryAman, c);
                     cmd.Parameters.AddWithValue("@nama", inputDariUser);
                     int baris = cmd.ExecuteNonQuery();
                     MessageBox.Show(
-                        "Query AMAN dijalankan!\n" +
-                        "Baris terupdate: " + baris + "\n\n" +
+                        "Query AMAN dijalankan!\nBaris terupdate: " + baris + "\n\n" +
                         "Input '" + inputDariUser + "' diperlakukan sebagai literal string,\n" +
                         "bukan sebagai perintah SQL.",
                         "Parameterized Query — AMAN",
@@ -489,6 +405,92 @@ namespace AMKH_TESTING
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Excel Files|*.xlsx;*.xls";
+                ofd.Title = "Pilih File Excel Konsumsi";
+
+                if (ofd.ShowDialog() != DialogResult.OK) return;
+
+                try
+                {
+                    using (var stream = System.IO.File.Open(
+                        ofd.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    using (var reader = ExcelDataReader.ExcelReaderFactory.CreateReader(stream))
+                    {
+                        var result = reader.AsDataSet(new ExcelDataReader.ExcelDataSetConfiguration()
+                        {
+                            ConfigureDataTable = _ => new ExcelDataReader.ExcelDataTableConfiguration()
+                            {
+                                UseHeaderRow = true
+                            }
+                        });
+
+                        dtImport = result.Tables[0];
+                        dgvKonsumsi.DataSource = dtImport;
+
+                        btnImportDB.Enabled = true;
+                        MessageBox.Show(
+                            dtImport.Rows.Count + " baris data berhasil dibaca!\nCek preview di tabel, lalu klik Import ke Database.",
+                            "Preview Excel",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error baca Excel: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnImportDB_Click(object sender, EventArgs e)
+        {
+            if (dtImport == null || dtImport.Rows.Count == 0)
+            {
+                MessageBox.Show("Tidak ada data untuk diimport!");
+                return;
+            }
+
+            int sukses = 0, gagal = 0, duplikat = 0;
+
+            foreach (DataRow row in dtImport.Rows)
+            {
+                try
+                {
+                    string namaItem = row["nama_item"].ToString().Trim();
+                    string tipe = row["tipe"].ToString().Trim();
+                    string kaloriStr = row["kalori"].ToString().Trim();
+                    string tglStr = row["tanggal"].ToString().Trim();
+
+                    if (string.IsNullOrEmpty(namaItem)) { gagal++; continue; }
+                    if (!decimal.TryParse(kaloriStr, out decimal kalori)) { gagal++; continue; }
+                    if (!DateTime.TryParse(tglStr, out DateTime tanggal)) { gagal++; continue; }
+
+                    string status = dbLogic.ImportKonsumsi(namaItem, kalori, tipe, tanggal.Date);
+                    if (status == "INSERTED") sukses++;
+                    else duplikat++;
+                }
+                catch { gagal++; }
+            }
+
+            MessageBox.Show(
+                $"Import selesai!\n" +
+                $"Berhasil  : {sukses} baris\n" +
+                $"Duplikat  : {duplikat} baris (diskip)\n" +
+                $"Gagal     : {gagal} baris",
+                "Hasil Import",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            dtImport = null;
+            btnImportDB.Enabled = false;
+            MuatData();
+            TampilkanInfoKalori();
         }
     }
 }
