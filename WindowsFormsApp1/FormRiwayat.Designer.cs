@@ -1,4 +1,4 @@
-﻿namespace AMKH_TESTING
+﻿namespace AMKH
 {
     partial class FormRiwayat
     {
