@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace AMKH_TESTING
+namespace AMKH
 {
     public partial class FormUtama : Form
     {
@@ -19,8 +19,8 @@ namespace AMKH_TESTING
         private void FormUtama_Load(object sender, EventArgs e)
         {
             CekKoneksi();
-            BukaForm(new FormKonsumsi());
-            SetNavbarAktif(btnNavKonsumsi);
+            BukaForm(new FormDashboard());
+            SetNavbarAktif(btnNavDashboard);
         }
 
         private void CekKoneksi()
@@ -75,9 +75,21 @@ namespace AMKH_TESTING
             SetNavbarAktif(btnNavRiwayat);
         }
 
+        private void btnNavRekap_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FormRekap());
+            SetNavbarAktif(btnNavRekap);
+        }
+
+        private void btnNavDashboard_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FormDashboard());
+            SetNavbarAktif(btnNavDashboard);
+        }
+
         private void SetNavbarAktif(Button btnAktif)
         {
-            Button[] nav = { btnNavKonsumsi, btnNavAktivitas, btnNavRiwayat };
+            Button[] nav = { btnNavKonsumsi, btnNavAktivitas, btnNavRiwayat, btnNavRekap, btnNavDashboard };
             foreach (var btn in nav)
             {
                 btn.BackColor = Color.FromArgb(50, 50, 45);
