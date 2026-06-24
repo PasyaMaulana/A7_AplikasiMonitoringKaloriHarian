@@ -1,16 +1,16 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace AMKH_TESTING
+namespace AMKH
 {
     public partial class FormAktivitas : Form
     {
-        private string connectionString =
-            "Server=PASYA\\PASYA;Database=AMKH_DB;Integrated Security=True;";
+        private DAL dbLogic = new DAL();
         private int selectedId = -1;
+        private DataTable dtImport = null;
 
         public FormAktivitas()
         {
@@ -28,13 +28,13 @@ namespace AMKH_TESTING
 
             btnUpdate.Enabled = false;
             btnHapus.Enabled = false;
+            btnImportDB.Enabled = false;
 
             AturKolom();
             TampilkanInfoAktivitas();
             HitungTotal();
         }
 
-        // ── Load data via VIEW vw_AktivitasAktif ─────────
         private void MuatData()
         {
             try
@@ -66,71 +66,39 @@ namespace AMKH_TESTING
                 dgvAktivitas.Columns["dataGridViewTextBoxColumn6"].HeaderText = "Tanggal";
         }
 
-        // ── Hitung total via OUTPUT PARAMETER ────────────
         private void HitungTotal()
         {
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_CountAktivitas", c)
-                    {
-                        CommandType = CommandType.StoredProcedure
-                    };
-                    var pTotal = cmd.Parameters.Add("@total", SqlDbType.Int);
-                    pTotal.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
-                    lblTotalRecord.Text = "Total: " + pTotal.Value + " record aktif";
-                }
+                lblTotalRecord.Text = "Total: " + dbLogic.CountAktivitas() + " record aktif";
             }
             catch { }
         }
 
-        // ── Info kalori terbakar hari ini ─────────────────
         private void TampilkanInfoAktivitas()
         {
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    DateTime tgl = dtpTanggal.Value.Date;
+                DateTime tgl = dtpTanggal.Value.Date;
+                decimal totalTerbakar = dbLogic.GetTotalKaloriTerbakar(tgl);
+                decimal target = dbLogic.GetTargetKalori(tgl);
+                decimal totalMasuk = dbLogic.GetTotalKaloriHariIni(tgl);
+                decimal bersih = totalMasuk - totalTerbakar;
 
-                    var cmd = new SqlCommand(
-                        "SELECT ISNULL(SUM(kalori_terbakar),0) FROM Aktivitas WHERE tanggal=@tgl", c);
-                    cmd.Parameters.AddWithValue("@tgl", tgl);
-                    decimal totalTerbakar = (decimal)cmd.ExecuteScalar();
+                lblInfoAktivitas.Text =
+                    tgl.ToString("dd/MM/yyyy") +
+                    " — Masuk: " + totalMasuk.ToString("N0") + " kkal" +
+                    " | Terbakar: " + totalTerbakar.ToString("N0") + " kkal" +
+                    " | Bersih: " + bersih.ToString("N0") + " kkal";
 
-                    var cmdTgt = new SqlCommand(
-                        "SELECT ISNULL(target_kalori,0) FROM Target WHERE tanggal=@tgl", c);
-                    cmdTgt.Parameters.AddWithValue("@tgl", tgl);
-                    object tRes = cmdTgt.ExecuteScalar();
-                    decimal target = (tRes != null && tRes != DBNull.Value) ? (decimal)tRes : 0;
-
-                    var cmdKon = new SqlCommand(
-                        "SELECT ISNULL(SUM(kalori),0) FROM Konsumsi WHERE tanggal=@tgl", c);
-                    cmdKon.Parameters.AddWithValue("@tgl", tgl);
-                    decimal totalMasuk = (decimal)cmdKon.ExecuteScalar();
-
-                    decimal bersih = totalMasuk - totalTerbakar;
-
-                    lblInfoAktivitas.Text =
-                        tgl.ToString("dd/MM/yyyy") +
-                        " — Masuk: " + totalMasuk.ToString("N0") + " kkal" +
-                        " | Terbakar: " + totalTerbakar.ToString("N0") + " kkal" +
-                        " | Bersih: " + bersih.ToString("N0") + " kkal";
-
-                    if (target > 0)
-                        lblInfoAktivitas.ForeColor = bersih <= target ? Color.LimeGreen : Color.Red;
-                    else
-                        lblInfoAktivitas.ForeColor = Color.FromArgb(255, 200, 60);
-                }
+                if (target > 0)
+                    lblInfoAktivitas.ForeColor = bersih <= target ? Color.LimeGreen : Color.Red;
+                else
+                    lblInfoAktivitas.ForeColor = Color.FromArgb(255, 200, 60);
             }
             catch { }
         }
 
-        // ── Set Target via SP ─────────────────────────────
         private void btnSetTarget_Click(object sender, EventArgs e)
         {
             if (!decimal.TryParse(txtTargetKalori.Text, out decimal target) || target <= 0)
@@ -141,24 +109,12 @@ namespace AMKH_TESTING
             }
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_SetTarget", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggalTarget.Value.Date);
-                    cmd.Parameters.AddWithValue("@target_kalori", target);
-                    var pIsUpdate = cmd.Parameters.Add("@is_update", SqlDbType.Bit);
-                    pIsUpdate.Direction = ParameterDirection.Output;
-                    cmd.ExecuteNonQuery();
-
-                    bool isUpdate = (bool)pIsUpdate.Value;
-                    MessageBox.Show(
-                        "Target berhasil " + (isUpdate ? "diperbarui" : "disimpan") + "!",
-                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtTargetKalori.Clear();
-                    TampilkanInfoAktivitas();
-                }
+                dbLogic.SetTarget(dtpTanggalTarget.Value.Date, target, out bool isUpdate);
+                MessageBox.Show(
+                    "Target berhasil " + (isUpdate ? "diperbarui" : "disimpan") + "!",
+                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTargetKalori.Clear();
+                TampilkanInfoAktivitas();
             }
             catch (Exception ex)
             {
@@ -166,28 +122,21 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── Tambah via SP sp_TambahAktivitas ─────────────
         private void btnTambah_Click(object sender, EventArgs e)
         {
             if (!ValidasiInput()) return;
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_TambahAktivitas", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@nama_aktivitas", txtNamaAktivitas.Text.Trim());
-                    cmd.Parameters.AddWithValue("@kalori_terbakar", decimal.Parse(txtKaloriTerbakar.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggal.Value.Date);
-                    cmd.ExecuteNonQuery();
+                dbLogic.TambahAktivitas(
+                    txtNamaAktivitas.Text.Trim(),
+                    decimal.Parse(txtKaloriTerbakar.Text.Trim()),
+                    dtpTanggal.Value.Date);
 
-                    MessageBox.Show("Aktivitas berhasil ditambahkan!", "Sukses",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoAktivitas();
-                }
+                MessageBox.Show("Aktivitas berhasil ditambahkan!", "Sukses",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoAktivitas();
             }
             catch (Exception ex)
             {
@@ -195,7 +144,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── Update via SP sp_UpdateAktivitas ─────────────
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedId == -1) return;
@@ -205,23 +153,17 @@ namespace AMKH_TESTING
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_UpdateAktivitas", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@id_aktivitas", selectedId);
-                    cmd.Parameters.AddWithValue("@nama_aktivitas", txtNamaAktivitas.Text.Trim());
-                    cmd.Parameters.AddWithValue("@kalori_terbakar", decimal.Parse(txtKaloriTerbakar.Text.Trim()));
-                    cmd.Parameters.AddWithValue("@tanggal", dtpTanggal.Value.Date);
-                    cmd.ExecuteNonQuery();
+                dbLogic.UpdateAktivitas(
+                    selectedId,
+                    txtNamaAktivitas.Text.Trim(),
+                    decimal.Parse(txtKaloriTerbakar.Text.Trim()),
+                    dtpTanggal.Value.Date);
 
-                    MessageBox.Show("Aktivitas berhasil diubah!", "Sukses",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoAktivitas();
-                }
+                MessageBox.Show("Aktivitas berhasil diubah!", "Sukses",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoAktivitas();
             }
             catch (Exception ex)
             {
@@ -229,7 +171,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── Hapus via SP sp_HapusAktivitas ───────────────
         private void btnHapus_Click(object sender, EventArgs e)
         {
             if (selectedId == -1) return;
@@ -238,20 +179,12 @@ namespace AMKH_TESTING
 
             try
             {
-                using (var c = new SqlConnection(connectionString))
-                {
-                    c.Open();
-                    var cmd = new SqlCommand("sp_HapusAktivitas", c)
-                    { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.AddWithValue("@id_aktivitas", selectedId);
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Aktivitas berhasil dihapus!", "Sukses",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    BersihkanForm();
-                    MuatData();
-                    TampilkanInfoAktivitas();
-                }
+                dbLogic.HapusAktivitas(selectedId);
+                MessageBox.Show("Aktivitas berhasil dihapus!", "Sukses",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BersihkanForm();
+                MuatData();
+                TampilkanInfoAktivitas();
             }
             catch (Exception ex)
             {
@@ -259,7 +192,6 @@ namespace AMKH_TESTING
             }
         }
 
-        // ── Cari via BindingSource Filter ────────────────
         private void btnCari_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtCari.Text)) { MuatData(); return; }
@@ -281,7 +213,6 @@ namespace AMKH_TESTING
             MuatData();
         }
 
-        // ── Klik baris grid ──────────────────────────────
         private void dgvAktivitas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -334,6 +265,94 @@ namespace AMKH_TESTING
                 return false;
             }
             return true;
+        }
+
+        // ── IMPORT EXCEL ──────────────────────────────────
+
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Excel Files|*.xlsx;*.xls";
+                ofd.Title = "Pilih File Excel Aktivitas";
+
+                if (ofd.ShowDialog() != DialogResult.OK) return;
+
+                try
+                {
+                    using (var stream = System.IO.File.Open(
+                        ofd.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    using (var reader = ExcelDataReader.ExcelReaderFactory.CreateReader(stream))
+                    {
+                        var result = reader.AsDataSet(new ExcelDataReader.ExcelDataSetConfiguration()
+                        {
+                            ConfigureDataTable = _ => new ExcelDataReader.ExcelDataTableConfiguration()
+                            {
+                                UseHeaderRow = true
+                            }
+                        });
+
+                        dtImport = result.Tables[0];
+                        dgvAktivitas.DataSource = dtImport;
+
+                        btnImportDB.Enabled = true;
+                        MessageBox.Show(
+                            dtImport.Rows.Count + " baris data berhasil dibaca!\n" +
+                            "Cek preview di tabel, lalu klik Import ke Database.",
+                            "Preview Excel",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error baca Excel: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnImportDB_Click(object sender, EventArgs e)
+        {
+            if (dtImport == null || dtImport.Rows.Count == 0)
+            {
+                MessageBox.Show("Tidak ada data untuk diimport!");
+                return;
+            }
+
+            int sukses = 0, gagal = 0, duplikat = 0;
+
+            foreach (DataRow row in dtImport.Rows)
+            {
+                try
+                {
+                    string namaAktivitas = row["nama_aktivitas"].ToString().Trim();
+                    string kaloriStr = row["kalori_terbakar"].ToString().Trim();
+                    string tglStr = row["tanggal"].ToString().Trim();
+
+                    if (string.IsNullOrEmpty(namaAktivitas)) { gagal++; continue; }
+                    if (!decimal.TryParse(kaloriStr, out decimal kalori)) { gagal++; continue; }
+                    if (!DateTime.TryParse(tglStr, out DateTime tanggal)) { gagal++; continue; }
+
+                    string status = dbLogic.ImportAktivitas(namaAktivitas, kalori, tanggal.Date);
+                    if (status == "INSERTED") sukses++;
+                    else duplikat++;
+                }
+                catch { gagal++; }
+            }
+
+            MessageBox.Show(
+                $"Import selesai!\n" +
+                $"Berhasil  : {sukses} baris\n" +
+                $"Duplikat  : {duplikat} baris (diskip)\n" +
+                $"Gagal     : {gagal} baris",
+                "Hasil Import",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            dtImport = null;
+            btnImportDB.Enabled = false;
+            MuatData();
+            TampilkanInfoAktivitas();
         }
 
         private void panelSubHeader_Paint(object sender, PaintEventArgs e) { }
